@@ -20,7 +20,7 @@
         <p
           style="font-size: 17px; color: #71717A; margin-top: 12px; font-family: 'DM Sans', sans-serif; max-width: 480px; margin: 12px auto 0"
         >
-          Tallyno, c'est ton carnet de comptes intelligent — gratuit et simple.
+          Tallyno, c'est ton carnet de comptes intelligent. Gratuit et simple.
         </p>
       </div>
 
@@ -58,7 +58,7 @@
         <strong style="color: #18181B">pas</strong> une banque,
         <strong style="color: #18181B">pas</strong> une appli de paiement.
         <br class="hidden md:block">
-        Tu continues à payer comme d'habitude (Orange Money, MTN, espèces) — Tallyno gère juste
+        Tu continues à payer comme d'habitude (Orange Money, MTN, espèces). Tallyno s'occupe juste de
         <em>qui doit quoi à qui.</em>
       </p>
     </div>
@@ -89,7 +89,7 @@ const features = [
     emoji: '📊',
     bg: '#F5F3FF',
     title: 'Historique & Analytics',
-    desc: 'Tes dépenses, tes tendances, tes exports PDF/Excel — tout est là.'
+    desc: 'Tes dépenses, tes tendances, tes exports PDF/Excel. Tout est là.'
   },
   {
     emoji: '🔔',

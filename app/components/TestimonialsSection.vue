@@ -66,7 +66,7 @@
 <script setup>
 const testimonials = [
   {
-    quote: 'Depuis qu\'on utilise Tallyno dans ma coloc, plus jamais de \'c\'est toi qui dois\' — tout est clair.',
+    quote: 'Depuis qu\'on utilise Tallyno dans ma coloc, plus jamais de \'c\'est toi qui dois\'. Tout est clair.',
     name: 'Franck L.',
     role: 'Étudiant, Yaoundé',
     initials: 'FL',

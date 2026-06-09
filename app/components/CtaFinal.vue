@@ -25,7 +25,7 @@
           <p
             style="font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 32px; font-family: 'DM Sans', sans-serif"
           >
-            Rejoins +2 000 utilisateurs qui ont déjà dit au revoir aux "c'est toi qui dois".
+            Rejoins +2 000 personnes qui ont déjà dit au revoir aux "c'est toi qui dois".
             Gratuit, sans carte bancaire.
           </p>
 

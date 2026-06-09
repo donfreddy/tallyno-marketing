@@ -74,7 +74,7 @@ const steps = [
   {
     number: '01',
     title: 'Crée un groupe ou une tontine',
-    desc: 'Ajoute tes amis en 2 secondes par numéro de téléphone. Pas besoin qu\'ils aient l\'appli — ils reçoivent un SMS.',
+    desc: 'Ajoute tes amis en 2 secondes par numéro de téléphone. Pas besoin qu\'ils aient l\'appli. Ils reçoivent un SMS.',
     phone: phoneHome
   },
   {

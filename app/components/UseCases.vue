@@ -88,7 +88,7 @@ const cases = [
     emoji: '🏠',
     label: 'Coloc',
     title: 'Finis les post-its sur le frigo',
-    desc: 'Loyer, courses, internet, électricité — tout se calcule automatiquement. Tu sais toujours ce que tu dois, et ce qu\'on te doit.',
+    desc: 'Loyer, courses, internet, électricité. Tout se calcule automatiquement. Tu sais toujours ce que tu dois, et ce qu\'on te doit.',
     color: '#6366F1',
     bg: '#EEF2FF',
     stats: [
@@ -101,7 +101,7 @@ const cases = [
     emoji: '🌴',
     label: 'Voyage',
     title: 'Qui a payé l\'essence ? L\'hôtel ?',
-    desc: 'Partez l\'esprit léger. On s\'y retrouve au retour — tout est enregistré pendant le voyage, en temps réel.',
+    desc: 'Partez l\'esprit léger. On s\'y retrouve au retour. Tout est enregistré pendant le voyage, en temps réel.',
     color: '#10B981',
     bg: '#F0FDF4',
     stats: [

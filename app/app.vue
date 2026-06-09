@@ -15,8 +15,8 @@ useHead({
   }
 })
 
-const title = 'Tallyno — Les comptes entre amis, simplifiés.'
-const description = 'Partagez, suivez et équilibrez vos dépenses de groupe — sans cash, sans friction.'
+const title = 'Tallyno. Les comptes entre amis, simplifiés.'
+const description = 'Partage, suis et équilibre tes dépenses de groupe. Sans cash, sans friction.'
 
 useSeoMeta({
   title,
@@ -87,7 +87,7 @@ useSeoMeta({
             </div>
             <p style="font-size: 14px; color: #71717A; line-height: 1.65; max-width: 280px">
               Ton carnet de comptes partagé, intelligent.
-              Non-custodial — tu gardes le contrôle.
+              Tu gardes le contrôle, on s'occupe du reste.
             </p>
             <div class="flex gap-3 mt-5">
               <a
@@ -196,7 +196,7 @@ useSeoMeta({
           style="border-top: 1px solid #2D2D2F"
         >
           <p style="font-size: 13px; color: #52525B">
-            &copy; 2026 Tallyno — Non-custodial Finance
+            &copy; 2026 Tallyno. Non-custodial Finance
           </p>
           <p style="font-size: 13px; color: #52525B">
             Fait avec &lt;3 pour l'Afrique Centrale et de l'Ouest

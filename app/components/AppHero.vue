@@ -26,7 +26,7 @@
             <span
               style="font-size: 13px; font-weight: 600; color: #4F46E5; font-family: 'DM Sans', sans-serif"
             >
-              Gratuit — Aucune carte bancaire requise
+              Gratuit. Aucune carte bancaire requise
             </span>
           </div>
 
@@ -44,7 +44,7 @@
           <p
             style="font-size: 18px; color: #3F3F46; line-height: 1.6; margin-top: 20px; margin-bottom: 32px; font-family: 'DM Sans', sans-serif; max-width: 480px"
           >
-            Crée un groupe, ajoute tes amis, et suis qui doit quoi — en un clic.
+            Crée un groupe, ajoute tes amis, et suis qui doit quoi en un clic.
             Sans appli bancaire, sans friction.
           </p>
 
@@ -106,7 +106,7 @@
               </div>
             </div>
             <p style="font-size: 14px; color: #71717A; font-family: 'DM Sans', sans-serif">
-              <strong style="color: #18181B">+2 000</strong> utilisateurs en bêta
+              <strong style="color: #18181B">+2 000</strong> personnes en bêta
             </p>
           </div>
         </div>

@@ -48,7 +48,7 @@
         <PricingCard
           title="Tontine Pack"
           price="5 000 XAF"
-          period="par cycle — paiement unique"
+          period="par cycle. Paiement unique"
           :features="tontineFeatures"
           cta="Activer les Tontines"
           :highlight="false"
@@ -69,7 +69,7 @@
           </div>
           <div>
             <p style="font-size: 16px; font-weight: 700; color: #18181B; font-family: 'DM Sans', sans-serif">
-              Parrainage — Gagne Premium gratuitement
+              Parrainage. Gagne Premium gratuitement
             </p>
             <p style="font-size: 14px; color: #3F3F46; font-family: 'DM Sans', sans-serif">
               1 mois Premium offert à ton 1er filleul · Tontine Pack offert à 3 filleuls actifs
