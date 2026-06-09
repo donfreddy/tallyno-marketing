@@ -6,19 +6,27 @@
       </p>
 
       <div class="text-center py-4">
-        <p style="font-size: 10px; color: #71717A; font-family: 'DM Sans', sans-serif">Montant</p>
+        <p style="font-size: 10px; color: #71717A; font-family: 'DM Sans', sans-serif">
+          Montant
+        </p>
         <p style="font-size: 32px; font-weight: 700; color: #18181B; font-family: 'DM Mono', monospace">
           12 000
         </p>
-        <p style="font-size: 12px; color: #6366F1; font-family: 'DM Mono', monospace">XAF</p>
+        <p style="font-size: 12px; color: #6366F1; font-family: 'DM Mono', monospace">
+          XAF
+        </p>
       </div>
 
       <div
         class="p-3 rounded-xl mb-3"
         style="background: #F8F8FA; border: 1px solid #E4E4E7"
       >
-        <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">Description</p>
-        <p style="font-size: 12px; color: #18181B; font-family: 'DM Sans', sans-serif">Courses Sim.</p>
+        <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">
+          Description
+        </p>
+        <p style="font-size: 12px; color: #18181B; font-family: 'DM Sans', sans-serif">
+          Courses Sim.
+        </p>
       </div>
 
       <p style="font-size: 10px; font-weight: 600; color: #71717A; margin-bottom: 6px; font-family: 'DM Sans', sans-serif">

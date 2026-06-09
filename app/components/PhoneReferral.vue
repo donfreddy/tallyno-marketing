@@ -44,7 +44,10 @@
         </div>
       </div>
 
-      <div class="p-3 rounded-2xl" style="background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.06)">
+      <div
+        class="p-3 rounded-2xl"
+        style="background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.06)"
+      >
         <p style="font-size: 11px; font-weight: 600; color: #18181B; margin-bottom: 8px; font-family: 'DM Sans', sans-serif">
           Tes filleuls actifs
         </p>
@@ -57,9 +60,20 @@
           />
         </div>
         <div class="flex items-center justify-between">
-          <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">2/5 pour le badge Early Supporter</p>
+          <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">
+            2/5 pour le badge Early Supporter
+          </p>
           <div class="flex items-center gap-1">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#10B981"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <polyline points="20 6 9 17 4 12" />
             </svg>
             <span style="font-size: 9px; color: #10B981; font-family: 'DM Sans', sans-serif">1 mois offert</span>

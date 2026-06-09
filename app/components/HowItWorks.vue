@@ -1,5 +1,9 @@
 <template>
-  <section id="how" class="py-24" style="background: white">
+  <section
+    id="how"
+    class="py-24"
+    style="background: white"
+  >
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <span
@@ -62,24 +66,28 @@
 </template>
 
 <script setup>
+const phoneHome = resolveComponent('PhoneHome')
+const phoneAddExpense = resolveComponent('PhoneAddExpense')
+const phoneGroup = resolveComponent('PhoneGroup')
+
 const steps = [
   {
     number: '01',
     title: 'Crée un groupe ou une tontine',
-    desc: "Ajoute tes amis en 2 secondes par numéro de téléphone. Pas besoin qu'ils aient l'appli — ils reçoivent un SMS.",
-    phone: PhoneHome
+    desc: 'Ajoute tes amis en 2 secondes par numéro de téléphone. Pas besoin qu\'ils aient l\'appli — ils reçoivent un SMS.',
+    phone: phoneHome
   },
   {
     number: '02',
     title: 'Ajoute une dépense ou une cotisation',
     desc: 'Qui a payé ? Combien ? On répartit automatiquement entre les membres. Choisissez une catégorie avec emoji.',
-    phone: PhoneAddExpense
+    phone: phoneAddExpense
   },
   {
     number: '03',
     title: 'Suivez qui doit quoi, exportez, analysez',
     desc: 'Solder ? Envoyez le lien de remboursement direct. Vos stats ? Un clic. Export PDF ou Excel à tout moment.',
-    phone: PhoneGroup
+    phone: phoneGroup
   }
 ]
 </script>

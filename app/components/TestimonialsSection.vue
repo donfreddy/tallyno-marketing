@@ -1,5 +1,8 @@
 <template>
-  <section class="py-24" style="background: #F8F8FA">
+  <section
+    class="py-24"
+    style="background: #F8F8FA"
+  >
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <span
@@ -23,7 +26,11 @@
           style="background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.06)"
         >
           <div class="flex gap-1 mb-4">
-            <span v-for="i in t.stars" :key="i" style="color: #F59E0B; font-size: 16px">★</span>
+            <span
+              v-for="i in t.stars"
+              :key="i"
+              style="color: #F59E0B; font-size: 16px"
+            >★</span>
           </div>
 
           <p

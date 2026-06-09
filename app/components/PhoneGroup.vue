@@ -19,14 +19,24 @@
       </div>
 
       <div class="grid grid-cols-2 gap-2 mb-3">
-        <div class="p-2 rounded-xl" style="background: #F0FDF4">
-          <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">Tu reçois</p>
+        <div
+          class="p-2 rounded-xl"
+          style="background: #F0FDF4"
+        >
+          <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">
+            Tu reçois
+          </p>
           <p style="font-size: 13px; font-weight: 700; color: #10B981; font-family: 'DM Mono', monospace">
             12 500 XAF
           </p>
         </div>
-        <div class="p-2 rounded-xl" style="background: #FFF1F2">
-          <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">Tu dois</p>
+        <div
+          class="p-2 rounded-xl"
+          style="background: #FFF1F2"
+        >
+          <p style="font-size: 9px; color: #71717A; font-family: 'DM Sans', sans-serif">
+            Tu dois
+          </p>
           <p style="font-size: 13px; font-weight: 700; color: #F43F5E; font-family: 'DM Mono', monospace">
             0 XAF
           </p>

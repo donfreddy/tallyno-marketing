@@ -52,8 +52,22 @@
     </p>
 
     <div class="flex flex-col gap-3 mb-8 flex-1">
-      <div v-for="f in features" :key="f" class="flex items-start gap-3">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" :stroke="highlight ? '#A5F3D0' : '#10B981'" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5">
+      <div
+        v-for="f in features"
+        :key="f"
+        class="flex items-start gap-3"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          :stroke="highlight ? '#A5F3D0' : '#10B981'"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="flex-shrink-0 mt-0.5"
+        >
           <polyline points="20 6 9 17 4 12" />
         </svg>
         <span

@@ -16,8 +16,14 @@
         9:41
       </span>
       <div class="flex gap-1 items-center">
-        <div class="w-3 h-1.5 rounded-sm" style="background: #18181B" />
-        <div class="w-1 h-1 rounded-full" style="background: #18181B" />
+        <div
+          class="w-3 h-1.5 rounded-sm"
+          style="background: #18181B"
+        />
+        <div
+          class="w-1 h-1 rounded-full"
+          style="background: #18181B"
+        />
       </div>
     </div>
     <div class="h-full overflow-hidden">

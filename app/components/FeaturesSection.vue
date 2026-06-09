@@ -1,5 +1,9 @@
 <template>
-  <section id="features" class="py-24" style="background: #F8F8FA">
+  <section
+    id="features"
+    class="py-24"
+    style="background: #F8F8FA"
+  >
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <span
@@ -53,7 +57,7 @@
         Tallyno n'est
         <strong style="color: #18181B">pas</strong> une banque,
         <strong style="color: #18181B">pas</strong> une appli de paiement.
-        <br class="hidden md:block" />
+        <br class="hidden md:block">
         Tu continues à payer comme d'habitude (Orange Money, MTN, espèces) — Tallyno gère juste
         <em>qui doit quoi à qui.</em>
       </p>

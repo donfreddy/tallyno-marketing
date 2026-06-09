@@ -1,7 +1,9 @@
 <template>
   <PhoneShell>
     <div class="px-4 pt-4 pb-3">
-      <p style="font-size: 11px; color: #71717A; font-family: 'DM Sans', sans-serif">Bonjour 👋</p>
+      <p style="font-size: 11px; color: #71717A; font-family: 'DM Sans', sans-serif">
+        Bonjour 👋
+      </p>
       <p style="font-size: 16px; font-weight: 700; color: #18181B; font-family: 'DM Sans', sans-serif">
         Franck L.
       </p>

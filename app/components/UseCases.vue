@@ -1,5 +1,8 @@
 <template>
-  <section class="py-24" style="background: white">
+  <section
+    class="py-24"
+    style="background: white"
+  >
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <span
@@ -54,8 +57,15 @@
             {{ c.desc }}
           </p>
 
-          <div class="flex flex-col gap-2 pt-4" style="border-top: 1px solid #F3F4F6">
-            <div v-for="s in c.stats" :key="s.label" class="flex items-center justify-between">
+          <div
+            class="flex flex-col gap-2 pt-4"
+            style="border-top: 1px solid #F3F4F6"
+          >
+            <div
+              v-for="s in c.stats"
+              :key="s.label"
+              class="flex items-center justify-between"
+            >
               <span style="font-size: 13px; color: #71717A; font-family: 'DM Sans', sans-serif">
                 {{ s.label }}
               </span>

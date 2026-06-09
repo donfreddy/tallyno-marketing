@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Navbar />
-    <Hero />
+    <AppNavbar />
+    <AppHero />
     <HowItWorks />
-    <Features />
+    <FeaturesSection />
     <UseCases />
-    <Testimonials />
-    <Pricing />
+    <TestimonialsSection />
+    <PricingSection />
     <CtaFinal />
   </div>
 </template>

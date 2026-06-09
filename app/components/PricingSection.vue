@@ -1,5 +1,9 @@
 <template>
-  <section id="pricing" class="py-24" style="background: white">
+  <section
+    id="pricing"
+    class="py-24"
+    style="background: white"
+  >
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <span
@@ -57,7 +61,10 @@
         style="background: #EEF2FF"
       >
         <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background: #4F46E5; font-size: 22px">
+          <div
+            class="w-12 h-12 rounded-2xl flex items-center justify-center"
+            style="background: #4F46E5; font-size: 22px"
+          >
             🎁
           </div>
           <div>
