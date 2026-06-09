@@ -38,7 +38,7 @@
         <PricingCard
           title="Premium"
           price="2 500 XAF"
-          period="par mois · ou 25 000 XAF/an"
+          period="2 500 XAF/mois · ou 25 000 XAF/an"
           :features="premiumFeatures"
           cta="Essayer Premium"
           :highlight="true"
@@ -48,12 +48,24 @@
         <PricingCard
           title="Tontine Pack"
           price="5 000 XAF"
-          period="par cycle. Paiement unique"
+          period="par tontine créée · Paiement unique"
           :features="tontineFeatures"
           cta="Activer les Tontines"
           :highlight="false"
-          badge="Idéal pour les cercles"
+          badge="Paiement unique"
         />
+      </div>
+
+      <!-- Pourquoi le Tontine Pack -->
+      <div
+        class="mt-10 p-6 rounded-3xl text-center"
+        style="background: #F8F8FA; border: 1px solid #E4E4E7"
+      >
+        <p style="font-size: 15px; color: #3F3F46; font-family: 'DM Sans', sans-serif; max-width: 640px; margin: 0 auto">
+          Le Tontine Pack est un <strong>paiement unique</strong> valable pour tout le cycle de ta tontine.
+          Payé par le président ou partagé entre les membres.
+          <span style="color: #10B981; font-weight: 600"> 5 000 XAF à 10 = 500 XAF/personne pour l'année.</span>
+        </p>
       </div>
 
       <div
@@ -89,28 +101,30 @@
 
 <script setup>
 const freeFeatures = [
-  'Groupes illimités',
-  'Membres illimités par groupe',
-  'Suivi des dépenses en temps réel',
+  'Groupes split bill illimités',
+  '1 tontine active',
+  'Historique 3 mois glissants',
+  'Notifications push',
   'Catégories avec emoji',
-  'Remboursements en un tap',
-  'Multi-admin par groupe'
+  'Remboursements en un tap'
 ]
 
 const premiumFeatures = [
-  'Tout le gratuit, sans limite',
+  'Tout ce que fait Tallyno, sans limite',
   'Export PDF & Excel',
   'Historique illimité',
-  'Analytics avancés',
+  'Analytics groupe avancés',
+  'Multi-admin',
   'Rappels WhatsApp automatisés',
-  'Support prioritaire'
+  'Support prioritaire',
+  'Feature requests prioritaires'
 ]
 
 const tontineFeatures = [
-  'Tontines illimitées',
-  'Planning des cotisations auto',
-  'Rappels SMS & WhatsApp',
-  'Suivi des impayés + relances',
+  'Débloque les tontines illimitées',
+  'Planning des cotisations automatisé',
+  'Rappels SMS/WhatsApp automatiques',
+  'Suivi des impayés + relances auto',
   'Export CSV du cycle complet'
 ]
 </script>
