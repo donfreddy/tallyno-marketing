@@ -55,7 +55,7 @@
         </span>
       </div>
 
-      <div class="hidden md:flex items-center gap-8">
+      <div v-if="isHome" class="hidden md:flex items-center gap-8">
         <a
           v-for="[label, href] in links"
           :key="href"
@@ -67,13 +67,14 @@
         </a>
       </div>
 
-      <div class="hidden md:flex items-center gap-3">
-        <button
-          class="px-5 py-2 rounded-full text-sm transition-all hover:opacity-90"
+      <div v-if="!isDownload" class="hidden md:flex items-center gap-3">
+        <NuxtLink
+          to="/download"
+          class="px-5 py-2 rounded-full text-sm transition-all hover:opacity-90 inline-block"
           style="background: #4F46E5; color: white; font-weight: 600; font-size: 14px"
         >
           Télécharger
-        </button>
+        </NuxtLink>
       </div>
 
       <button
@@ -142,27 +143,35 @@
       v-if="open"
       class="md:hidden bg-white border-t border-black/5 px-6 py-4 flex flex-col gap-4"
     >
-      <a
-        v-for="[label, href] in links"
-        :key="href"
-        :href="href"
-        style="color: #3F3F46; font-weight: 500; font-size: 16px"
+      <template v-if="isHome">
+        <a
+          v-for="[label, href] in links"
+          :key="href"
+          :href="href"
+          style="color: #3F3F46; font-weight: 500; font-size: 16px"
+          @click="open = false"
+        >
+          {{ label }}
+        </a>
+      </template>
+      <NuxtLink
+        v-if="!isDownload"
+        to="/download"
+        class="mt-2 w-full py-3 rounded-full inline-block text-center"
+        style="background: #4F46E5; color: white; font-weight: 600"
         @click="open = false"
       >
-        {{ label }}
-      </a>
-      <button
-        class="mt-2 w-full py-3 rounded-full"
-        style="background: #4F46E5; color: white; font-weight: 600"
-      >
         Télécharger Tallyno
-      </button>
+      </NuxtLink>
     </div>
   </nav>
 </template>
 
 <script setup>
+const route = useRoute()
 const open = ref(false)
+const isHome = computed(() => route.path === '/')
+const isDownload = computed(() => route.path === '/download')
 
 const links = [
   ['Fonctionnalités', '#features'],

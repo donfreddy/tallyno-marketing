@@ -14,12 +14,14 @@
     "@iconify-json/lucide": "^1.2.105",
     "@iconify-json/simple-icons": "^1.2.80",
     "@nuxt/ui": "^4.7.1",
-    "motion": "^12.40.0",
+    "motion-v": "^2.3.0",
     "nuxt": "^4.4.4",
+    "qrcode": "^1.5.4",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
+    "@types/qrcode": "^1.5.6",
     "eslint": "^10.3.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.2.7"

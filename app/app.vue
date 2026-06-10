@@ -104,7 +104,9 @@ useSeoMeta({
             </p>
             <div class="flex gap-3 mt-5">
               <a
-                href="#"
+                href="https://wa.me/237XXXXXXXXX"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl flex items-center justify-center transition-opacity hover:opacity-80"
                 style="background: #2d2d2f"
                 aria-label="WhatsApp"
@@ -121,7 +123,9 @@ useSeoMeta({
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://instagram.com/tallynoapp"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl flex items-center justify-center transition-opacity hover:opacity-80"
                 style="background: #2d2d2f"
                 aria-label="Instagram"
@@ -154,7 +158,9 @@ useSeoMeta({
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://x.com/tallynoapp"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl flex items-center justify-center transition-opacity hover:opacity-80"
                 style="background: #2d2d2f"
                 aria-label="Twitter / X"
@@ -186,20 +192,34 @@ useSeoMeta({
               PRODUIT
             </p>
             <div class="flex flex-col gap-3">
-              <a
-                v-for="l in [
-                  'Fonctionnalités',
-                  'Comment ça marche',
-                  'Tarifs',
-                  'Télécharger'
-                ]"
-                :key="l"
-                href="#"
+              <NuxtLink
+                to="/#features"
                 style="font-size: 14px; color: #71717a"
                 class="hover:text-white transition-colors"
               >
-                {{ l }}
-              </a>
+                Fonctionnalités
+              </NuxtLink>
+              <NuxtLink
+                to="/#how"
+                style="font-size: 14px; color: #71717a"
+                class="hover:text-white transition-colors"
+              >
+                Comment ça marche
+              </NuxtLink>
+              <NuxtLink
+                to="/#pricing"
+                style="font-size: 14px; color: #71717a"
+                class="hover:text-white transition-colors"
+              >
+                Tarifs
+              </NuxtLink>
+              <NuxtLink
+                to="/download"
+                style="font-size: 14px; color: #71717a"
+                class="hover:text-white transition-colors"
+              >
+                Télécharger
+              </NuxtLink>
             </div>
           </div>
 
@@ -216,18 +236,26 @@ useSeoMeta({
               LÉGAL
             </p>
             <div class="flex flex-col gap-3">
-              <a
-                v-for="l in [
-                  'Conditions d\'utilisation',
-                  'Politique de confidentialité',
-                  'Contact'
-                ]"
-                :key="l"
-                href="#"
+              <NuxtLink
+                to="/terms"
                 style="font-size: 14px; color: #71717a"
                 class="hover:text-white transition-colors"
               >
-                {{ l }}
+                Conditions d'utilisation
+              </NuxtLink>
+              <NuxtLink
+                to="/privacy"
+                style="font-size: 14px; color: #71717a"
+                class="hover:text-white transition-colors"
+              >
+                Politique de confidentialité
+              </NuxtLink>
+              <a
+                href="mailto:hello@tallyno.app"
+                style="font-size: 14px; color: #71717a"
+                class="hover:text-white transition-colors"
+              >
+                Contact
               </a>
             </div>
           </div>
