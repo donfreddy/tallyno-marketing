@@ -88,8 +88,12 @@
                 />
               </svg>
               <div class="text-left">
-                <p style="font-size: 10px; opacity: 0.6">Disponible sur</p>
-                <p style="font-size: 14px; line-height: 1">App Store</p>
+                <p style="font-size: 10px; opacity: 0.6">
+                  Disponible sur
+                </p>
+                <p style="font-size: 14px; line-height: 1">
+                  App Store
+                </p>
               </div>
             </button>
 
@@ -113,8 +117,12 @@
                 />
               </svg>
               <div class="text-left">
-                <p style="font-size: 10px; opacity: 0.6">Disponible sur</p>
-                <p style="font-size: 14px; line-height: 1">Google Play</p>
+                <p style="font-size: 10px; opacity: 0.6">
+                  Disponible sur
+                </p>
+                <p style="font-size: 14px; line-height: 1">
+                  Google Play
+                </p>
               </div>
             </button>
           </div>
@@ -167,7 +175,9 @@
               font-family: &quot;DM Sans&quot;, sans-serif;
             "
           >
-            <p style="font-size: 10px; color: #71717a">Voyage Kribi</p>
+            <p style="font-size: 10px; color: #71717a">
+              Voyage Kribi
+            </p>
             <p
               style="
                 font-size: 13px;
@@ -188,7 +198,9 @@
               font-family: &quot;DM Sans&quot;, sans-serif;
             "
           >
-            <p style="font-size: 10px; color: #71717a">Aïcha te doit</p>
+            <p style="font-size: 10px; color: #71717a">
+              Aïcha te doit
+            </p>
             <p
               style="
                 font-size: 13px;
@@ -217,7 +229,12 @@
         stroke-linecap="round"
         stroke-linejoin="round"
       >
-        <line x1="12" y1="5" x2="12" y2="19" />
+        <line
+          x1="12"
+          y1="5"
+          x2="12"
+          y2="19"
+        />
         <polyline points="19 12 12 19 5 12" />
       </svg>
     </div>
@@ -226,10 +243,10 @@
 
 <script setup>
 const avatars = [
-  { label: "FL", color: "#6366F1" },
-  { label: "JM", color: "#10B981" },
-  { label: "AK", color: "#F59E0B" },
-  { label: "PB", color: "#F43F5E" },
-  { label: "CY", color: "#8B5CF6" },
-];
+  { label: 'FL', color: '#6366F1' },
+  { label: 'JM', color: '#10B981' },
+  { label: 'AK', color: '#F59E0B' },
+  { label: 'PB', color: '#F43F5E' },
+  { label: 'CY', color: '#8B5CF6' }
+]
 </script>

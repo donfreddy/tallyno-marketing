@@ -2,11 +2,11 @@
   <div>
     <AppNavbar />
     <AppHero />
-    <HowItWorks />
-    <FeaturesSection />
-    <UseCases />
-    <TestimonialsSection />
-    <PricingSection />
-    <CtaFinal />
+    <AnimatedSection><HowItWorks /></AnimatedSection>
+    <AnimatedSection><FeaturesSection /></AnimatedSection>
+    <AnimatedSection><UseCases /></AnimatedSection>
+    <AnimatedSection><TestimonialsSection /></AnimatedSection>
+    <AnimatedSection><PricingSection /></AnimatedSection>
+    <AnimatedSection><CtaFinal /></AnimatedSection>
   </div>
 </template>
