@@ -14,7 +14,7 @@
         />
 
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <motion.div :initial="{ opacity: 0, y: 28 }" :whileInView="{ opacity: 1, y: 0 }" :transition="t()">
+          <div>
             <div
               class="inline-flex items-center justify-center w-20 h-20 rounded-3xl mb-6"
               style="background: rgba(255,255,255,0.15)"
@@ -24,25 +24,25 @@
                 <line x1="12" y1="18" x2="12.01" y2="18" />
               </svg>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div :initial="{ opacity: 0, y: 28 }" :whileInView="{ opacity: 1, y: 0 }" :transition="t(0.1)">
+          <div>
             <h1
               style="font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: white; letter-spacing: -0.03em; font-family: 'DM Sans', sans-serif; line-height: 1.1; margin-bottom: 16px"
             >
               Télécharge Tallyno
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.div :initial="{ opacity: 0, y: 28 }" :whileInView="{ opacity: 1, y: 0 }" :transition="t(0.2)">
+          <div>
             <p
               style="font-size: 18px; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; max-width: 480px; margin: 0 auto 40px"
             >
               Disponible sur iOS et Android. Gratuit, sans carte bancaire. Tes comptes en groupe, enfin simples.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div :initial="{ opacity: 0, y: 28 }" :whileInView="{ opacity: 1, y: 0 }" :transition="t(0.3)">
+          <div>
             <div class="flex flex-wrap justify-center gap-4">
               <a :href="APP_STORE_URL" target="_blank" rel="noopener noreferrer">
                 <button
@@ -70,14 +70,14 @@
                 </button>
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       <!-- QR Codes -->
       <section class="py-20" style="background: white">
         <div class="max-w-4xl mx-auto px-6">
-          <motion.div :initial="{ opacity: 0, y: 28 }" :whileInView="{ opacity: 1, y: 0 }" :transition="t()">
+          <div>
             <h2
               class="text-center mb-4"
               style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: #18181B; letter-spacing: -0.02em; font-family: 'DM Sans', sans-serif"
@@ -87,15 +87,12 @@
             <p class="text-center mb-12" style="font-size: 16px; color: #71717A; font-family: 'DM Sans', sans-serif">
               Pointe l'appareil photo de ton téléphone sur le QR code pour ouvrir le store.
             </p>
-          </motion.div>
+          </div>
 
           <div class="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            <motion.div
+            <div
               v-for="(store, i) in stores"
               :key="store.label"
-              :initial="{ opacity: 0, y: 28 }"
-              :whileInView="{ opacity: 1, y: 0 }"
-              :transition="t(0.1 * i)"
             >
               <div
                 class="flex flex-col items-center p-8 rounded-3xl"
@@ -130,7 +127,7 @@
                   Ou ouvrir directement →
                 </a>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -138,7 +135,7 @@
       <!-- Highlights -->
       <section class="py-16" style="background: #F8F8FA">
         <div class="max-w-2xl mx-auto px-6">
-          <motion.div :initial="{ opacity: 0, y: 28 }" :whileInView="{ opacity: 1, y: 0 }" :transition="t()">
+          <div>
             <div class="grid sm:grid-cols-2 gap-4">
               <div
                 v-for="h in highlights"
@@ -153,7 +150,7 @@
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </main>
@@ -161,11 +158,6 @@
 </template>
 
 <script setup lang="ts">
-import { motion } from 'motion-v'
-
-const ease = [0.21, 0.47, 0.32, 0.98] as const
-const t = (delay?: number) => ({ duration: 0.6, delay, ease })
-
 const APP_STORE_URL = 'https://apps.apple.com/app/tallyno'
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.tallyno'
 

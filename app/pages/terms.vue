@@ -5,7 +5,7 @@
     <main style="background: #F8F8FA; padding-top: 64px">
       <div style="background: white; border-bottom: 1px solid #F3F4F6">
         <div class="max-w-3xl mx-auto px-6 py-16">
-          <motion.div :initial="{ opacity: 0, y: 28 }" :whileInView="{ opacity: 1, y: 0 }" :transition="{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }">
+          <div>
             <span
               class="inline-block px-4 py-1.5 rounded-full mb-4"
               style="background: #EEF2FF; color: #4F46E5; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif"
@@ -14,7 +14,7 @@
               style="font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: #18181B; letter-spacing: -0.03em; font-family: 'DM Sans', sans-serif; margin-bottom: 12px"
             >Conditions d'utilisation</h1>
             <p style="font-size: 16px; color: #71717A; font-family: 'DM Sans', sans-serif">Dernière mise à jour : 10 juin 2026</p>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -77,5 +77,4 @@
 </template>
 
 <script setup lang="ts">
-import { motion } from 'motion-v'
 </script>
