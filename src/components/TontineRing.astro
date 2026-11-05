@@ -1,5 +1,6 @@
 ---
 import { formatAmount } from "../config";
+import { ringGeometry } from "../data/tontine-ring";
 
 /**
  * One tontine round, drawn as the circle members sit in. Every payment is a
@@ -22,9 +23,8 @@ const contributors = [
 ];
 const received = contributors.filter((member) => member.paid).length * share;
 
-const size = 440;
+const { size, radius } = ringGeometry;
 const center = size / 2;
-const radius = 158;
 const step = 360 / (contributors.length + 1);
 const point = (index: number) => {
 	const angle = ((-90 + index * step) * Math.PI) / 180;
