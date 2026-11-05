@@ -1,0 +1,205 @@
+---
+/** The objection that kills fintech apps here: "I'm not handing my money to an app." */
+const facts = [
+	{
+		title: "Pas de compte à recharger",
+		text: "Tu gardes ton compte Mobile Money habituel. Il n'y a rien à créditer dans Tallyno.",
+	},
+	{
+		title: "Aucune commission sur tes cotisations",
+		text: "Tallyno ne prélève rien sur l'argent qui circule. Seuls les frais habituels de ton opérateur s'appliquent.",
+	},
+	{
+		title: "Rien de bloqué chez nous",
+		text: "Comme nous ne gardons pas l'argent, il n'y a jamais rien à récupérer auprès de nous.",
+	},
+];
+---
+
+<section class="custody" aria-labelledby="custody-title">
+	<div class="frame custody__grid">
+		<div>
+			<h2 id="custody-title">Ton argent ne passe pas par nous.</h2>
+			<p class="custody__lead">
+				Tallyno n'est ni une banque ni un portefeuille. Tu paies directement la personne qui reçoit le tour. Nous, on
+				tient le registre.
+			</p>
+		</div>
+
+		<figure class="flow" aria-label="Le membre paie le bénéficiaire directement ; Tallyno enregistre le paiement sans le recevoir.">
+			<div class="flow__row">
+				<span class="flow__node">Toi</span>
+				<span class="flow__edge"><span>25 000 FCFA, par Mobile Money</span></span>
+				<span class="flow__node">Esther</span>
+			</div>
+			<div class="flow__register">
+				<strong>Tallyno</strong>
+				<span>note le paiement, Esther le confirme</span>
+			</div>
+		</figure>
+
+		<ul class="facts">
+			{
+				facts.map((fact) => (
+					<li>
+						<h3>{fact.title}</h3>
+						<p>{fact.text}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.custody {
+		padding-block: 4.5rem;
+		background: var(--color-petrol-950);
+		color: #fff;
+	}
+
+	.custody__grid {
+		display: grid;
+		gap: 2.75rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2.2rem, 1.4rem + 3.2vw, 3.8rem);
+		line-height: 1.02;
+		letter-spacing: -0.03em;
+	}
+
+	.custody__lead {
+		max-width: 32rem;
+		margin: 1.25rem 0 0;
+		font-size: 1.15rem;
+		color: var(--color-petrol-100);
+	}
+
+	.flow {
+		margin: 0;
+		/* Room above the arrow for its label, which wraps to two lines on phones. */
+		padding: 3rem 1.25rem 1.5rem;
+		border-radius: 1.25rem;
+		background: color-mix(in srgb, var(--color-petrol-800) 55%, transparent);
+		box-shadow: inset 0 0 0 1px color-mix(in srgb, #fff 10%, transparent);
+	}
+
+	.flow__row {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.flow__node {
+		padding: 0.6rem 1rem;
+		border-radius: 999px;
+		background: #fff;
+		color: var(--color-petrol-900);
+		font-weight: 700;
+	}
+
+	.flow__edge {
+		position: relative;
+		height: 2px;
+		background: var(--color-settled-soft);
+	}
+
+	.flow__edge::after {
+		content: "";
+		position: absolute;
+		right: -2px;
+		top: -5px;
+		border: 6px solid transparent;
+		border-left: 9px solid var(--color-settled-soft);
+		border-right: 0;
+	}
+
+	.flow__edge span {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0.6rem;
+		text-align: center;
+		font-size: 0.85rem;
+		color: var(--color-petrol-100);
+	}
+
+	/* The register sits below the flow, linked by a dashed line: it observes, it never holds. */
+	.flow__register {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 2.25rem auto 0;
+		max-width: 17rem;
+		padding: 0.75rem 1rem;
+		border: 1.5px dashed var(--color-petrol-400);
+		border-radius: 0.9rem;
+		text-align: center;
+	}
+
+	.flow__register::before {
+		content: "";
+		position: absolute;
+		left: 50%;
+		bottom: 100%;
+		height: 2.25rem;
+		border-left: 1.5px dashed var(--color-petrol-400);
+	}
+
+	.flow__register strong {
+		font-family: var(--font-display);
+		font-size: 1.1rem;
+	}
+
+	.flow__register span {
+		font-size: 0.9rem;
+		color: var(--color-petrol-200);
+	}
+
+	.facts {
+		display: grid;
+		gap: 1.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.facts li {
+		padding-top: 1rem;
+		border-top: 1px solid color-mix(in srgb, #fff 16%, transparent);
+	}
+
+	h3 {
+		margin: 0 0 0.35rem;
+		font-size: 1.15rem;
+	}
+
+	.facts p {
+		margin: 0;
+		color: var(--color-petrol-100);
+	}
+
+	@media (min-width: 30rem) {
+		.flow {
+			padding: 2.5rem 1.5rem 1.5rem;
+		}
+	}
+
+	@media (min-width: 60rem) {
+		.custody__grid {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			column-gap: 4rem;
+			align-items: center;
+		}
+
+		.facts {
+			grid-column: 1 / -1;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 2.5rem;
+		}
+	}
+</style>

@@ -1,0 +1,185 @@
+---
+/** The three things every tontine member recognises, each with the object that causes it. */
+---
+
+<section class="pains" aria-labelledby="pains-title">
+	<div class="frame">
+		<h2 id="pains-title">Tu connais ça.</h2>
+
+		<ul class="pains__list">
+			<li>
+				<div class="artifact artifact--book" aria-hidden="true">
+					<span>Aïcha <s>25 000</s> 25 000 ✓</span>
+					<span>Brice 25 000 ✓</span>
+					<span>Carine <em>payé ?</em></span>
+				</div>
+				<h3>Le cahier du trésorier</h3>
+				<p>
+					Une seule personne sait vraiment qui a payé. Si le cahier se perd, ou si elle se trompe, c'est sa parole
+					contre la tienne.
+				</p>
+			</li>
+			<li>
+				<div class="artifact artifact--sms" aria-hidden="true">
+					<span>Transfert de 25 000 FCFA effectué.</span>
+					<small>Capture envoyée dans le groupe, il y a 3 semaines</small>
+				</div>
+				<h3>Les captures Mobile Money</h3>
+				<p>
+					Chacun envoie sa capture dans le groupe WhatsApp. Le jour où il y a un doute, personne ne la retrouve.
+				</p>
+			</li>
+			<li>
+				<div class="artifact artifact--voice" aria-hidden="true">
+					<span class="artifact__play"></span>
+					<span class="artifact__wave"></span>
+					<small>0:47</small>
+				</div>
+				<h3>Les vocaux à 23 h</h3>
+				<p>
+					Qui n'a pas encore cotisé ? Qui passe au prochain tour ? Le groupe finit par parler plus des comptes que
+					de l'argent lui-même.
+				</p>
+			</li>
+		</ul>
+
+		<p class="pains__turn">
+			Tallyno remplace le cahier par un registre que tout le groupe voit, et que personne ne peut réécrire.
+		</p>
+	</div>
+</section>
+
+<style>
+	.pains {
+		padding-block: 4.5rem 4rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.pains__list {
+		display: grid;
+		gap: 2.5rem;
+		margin: 2.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	h3 {
+		margin: 1.25rem 0 0.4rem;
+		font-size: 1.3rem;
+		line-height: 1.2;
+	}
+
+	.pains__list p {
+		margin: 0;
+		max-width: 22rem;
+		color: var(--color-ink-2);
+	}
+
+	.artifact {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.3rem;
+		height: 7.5rem;
+		padding: 0.9rem 1rem;
+		border-radius: 0.9rem;
+		font-size: 0.92rem;
+	}
+
+	/* A ruled notebook page, with the corrections every treasurer makes. */
+	.artifact--book {
+		background:
+			linear-gradient(90deg, transparent 2.1rem, #f2b8b5 2.1rem 2.2rem, transparent 2.2rem),
+			repeating-linear-gradient(to bottom, #fffdf6 0 1.55rem, #cfdce8 1.55rem 1.62rem);
+		padding-left: 2.8rem;
+		color: #2a3550;
+		font-style: italic;
+		box-shadow: inset 0 0 0 1px #e7e2d3;
+	}
+
+	.artifact--book s {
+		opacity: 0.55;
+	}
+
+	.artifact--book em {
+		color: var(--color-debt);
+	}
+
+	.artifact--sms {
+		background: #fff;
+		box-shadow: inset 0 0 0 1px var(--color-line);
+	}
+
+	.artifact--sms span {
+		align-self: flex-start;
+		padding: 0.55rem 0.8rem;
+		background: var(--color-petrol-50);
+		border-radius: 0.8rem 0.8rem 0.8rem 0.2rem;
+		font-weight: 600;
+	}
+
+	.artifact--sms small,
+	.artifact--voice small {
+		font-size: 0.78rem;
+		color: var(--color-ink-2);
+	}
+
+	.artifact--voice {
+		flex-direction: row;
+		align-items: center;
+		gap: 0.75rem;
+		background: #fff;
+		box-shadow: inset 0 0 0 1px var(--color-line);
+	}
+
+	.artifact__play {
+		width: 2.4rem;
+		height: 2.4rem;
+		flex: none;
+		border-radius: 50%;
+		background: var(--color-petrol-600)
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E")
+			center / 1.1rem no-repeat;
+	}
+
+	.artifact__wave {
+		flex: 1;
+		height: 1.8rem;
+		background: repeating-linear-gradient(
+			90deg,
+			var(--color-petrol-300) 0 3px,
+			transparent 3px 6px
+		);
+		mask: linear-gradient(
+			to bottom,
+			transparent 0 10%,
+			#000 10% 90%,
+			transparent 90%
+		);
+		-webkit-mask: radial-gradient(ellipse 60% 100% at 40% 50%, #000 55%, transparent 56%);
+	}
+
+	.pains__turn {
+		max-width: 40rem;
+		margin: 3rem 0 0;
+		padding-top: 1.5rem;
+		border-top: 2px solid var(--color-petrol-600);
+		font-family: var(--font-display);
+		font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.7rem);
+		font-weight: 600;
+		line-height: 1.3;
+		letter-spacing: -0.015em;
+	}
+
+	@media (min-width: 52rem) {
+		.pains__list {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 2rem;
+		}
+	}
+</style>

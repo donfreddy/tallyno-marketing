@@ -1,0 +1,39 @@
+---
+import type { Screen } from "../data/screens";
+
+interface Props {
+	screen: Screen;
+	eager?: boolean;
+}
+
+const { screen, eager = false } = Astro.props;
+---
+
+<div class="phone">
+	<img
+		src={screen.src}
+		width={screen.width}
+		height={screen.height}
+		alt={screen.alt}
+		loading={eager ? "eager" : "lazy"}
+		decoding="async"
+	/>
+</div>
+
+<style>
+	/* A plain device frame; the image keeps the ratio of its width/height attributes. */
+	.phone {
+		padding: 0.55rem;
+		background: var(--color-ink);
+		border-radius: 2rem;
+		box-shadow: 0 1.5rem 3rem -1.5rem color-mix(in srgb, var(--color-petrol-950) 45%, transparent);
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 1.5rem;
+		background: var(--color-petrol-50);
+	}
+</style>

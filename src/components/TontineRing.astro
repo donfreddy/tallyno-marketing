@@ -1,0 +1,337 @@
+---
+import { formatAmount } from "../config";
+
+/**
+ * One tontine round, drawn as the circle members sit in. Every payment is a
+ * line from the payer straight to the beneficiary: nothing goes through the
+ * centre, which is where Tallyno sits, holding nothing.
+ *
+ * The static markup is the final state; the animation only exists under
+ * prefers-reduced-motion: no-preference.
+ */
+const share = 25000;
+const beneficiary = { name: "Esther", initial: "E" };
+const contributors = [
+	{ name: "Aïcha", initial: "A", paid: true },
+	{ name: "Brice", initial: "B", paid: true },
+	{ name: "Carine", initial: "C", paid: true },
+	{ name: "Didier", initial: "D", paid: true },
+	{ name: "Fabrice", initial: "F", paid: true },
+	{ name: "Grâce", initial: "G", paid: true },
+	{ name: "Hervé", initial: "H", paid: false },
+];
+const received = contributors.filter((member) => member.paid).length * share;
+
+const size = 440;
+const center = size / 2;
+const radius = 158;
+const step = 360 / (contributors.length + 1);
+const point = (index: number) => {
+	const angle = ((-90 + index * step) * Math.PI) / 180;
+	return { x: center + radius * Math.cos(angle), y: center + radius * Math.sin(angle) };
+};
+const top = point(0);
+
+const start = 0.7;
+const gap = 0.55;
+const members = contributors.map((member, index) => {
+	const position = point(index + 1);
+	const labelBelow = position.y >= center - 10;
+	return {
+		...member,
+		...position,
+		labelY: labelBelow ? position.y + 44 : position.y - 34,
+		debtY: labelBelow ? position.y + 61 : position.y - 52,
+		delay: start + index * gap,
+	};
+});
+const debtDelay = start + contributors.length * gap + 0.3;
+
+const label = `Exemple : le 5e tour d'une tontine de 8 membres. Six membres ont payé ${beneficiary.name} directement, ${formatAmount(received)} FCFA reçus. La part d'Hervé, ${formatAmount(share)} FCFA, est reportée au cycle suivant. Tallyno ne détient aucun fonds.`;
+---
+
+<figure class="tontine" data-ring data-share={share} data-start={start} data-gap={gap} data-paid={members.filter((m) => m.paid).length}>
+	<svg viewBox={`0 0 ${size} ${size}`} role="img" aria-label={label}>
+		<circle class="ring__track" cx={center} cy={center} r={radius} />
+
+		{
+			members.map((member) => (
+				<line
+					class:list={["chord", member.paid ? "chord--paid" : "chord--open"]}
+					x1={member.x}
+					y1={member.y}
+					x2={top.x}
+					y2={top.y}
+					pathLength="1"
+					style={`--t:${member.delay}s`}
+				/>
+			))
+		}
+
+		<circle class="core__disc" cx={center} cy={center + 12} r="86" />
+
+		<g class="core">
+			<text class="core__label" x={center} y={center - 34} text-anchor="middle">Reçu par {beneficiary.name}</text>
+			<text class="core__amount" x={center} y={center + 6} text-anchor="middle" data-counter>{formatAmount(received)}</text>
+			<text class="core__unit" x={center} y={center + 30} text-anchor="middle">FCFA</text>
+			<text class="core__held" x={center} y={center + 64} text-anchor="middle">Chez Tallyno : 0 FCFA</text>
+		</g>
+
+		<g class="node node--beneficiary">
+			<circle cx={top.x} cy={top.y} r="30" />
+			<text x={top.x} y={top.y + 7} text-anchor="middle">{beneficiary.initial}</text>
+			<text class="node__name" x={top.x} y={top.y - 42} text-anchor="middle">{beneficiary.name} reçoit ce tour</text>
+		</g>
+
+		{
+			members.map((member) => (
+				<g class:list={["node", member.paid ? "node--paid" : "node--debt"]} style={`--t:${member.paid ? member.delay : debtDelay}s`}>
+					<circle class="node__ring" cx={member.x} cy={member.y} r="24" />
+					<text x={member.x} y={member.y + 6} text-anchor="middle">{member.initial}</text>
+					{member.paid ? (
+						<g class="node__badge">
+							<circle cx={member.x + 17} cy={member.y - 17} r="9" />
+							<path d={`M${member.x + 13} ${member.y - 17}l3 3 5-6`} />
+						</g>
+					) : (
+						<text class="node__debt" x={member.x} y={member.debtY} text-anchor="middle">
+							{formatAmount(share)} reportés
+						</text>
+					)}
+					<text class="node__name" x={member.x} y={member.labelY} text-anchor="middle">{member.name}</text>
+				</g>
+			))
+		}
+	</svg>
+</figure>
+
+<script>
+	// Counts the beneficiary's total up in step with the drawn payments.
+	const ring = document.querySelector<HTMLElement>("[data-ring]");
+	const counter = ring?.querySelector<SVGTextElement>("[data-counter]");
+	const motionOk = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+	if (ring && counter && motionOk) {
+		const share = Number(ring.dataset.share);
+		const start = Number(ring.dataset.start);
+		const gap = Number(ring.dataset.gap);
+		const paid = Number(ring.dataset.paid);
+		const format = (value: number) => new Intl.NumberFormat("fr-FR").format(value).replace(/\s/g, " ");
+		counter.textContent = format(0);
+		for (let index = 1; index <= paid; index++) {
+			// Each payment lands when its node turns green (60% into its 0.75s animation).
+			const at = (start + (index - 1) * gap + 0.45) * 1000;
+			window.setTimeout(() => {
+				counter.textContent = format(index * share);
+			}, at);
+		}
+	}
+</script>
+
+<style>
+	.tontine {
+		margin: 0;
+		width: 100%;
+		max-width: 30rem;
+		margin-inline: auto;
+	}
+
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		overflow: visible;
+		font-family: var(--font-sans);
+	}
+
+	.ring__track {
+		fill: none;
+		stroke: color-mix(in srgb, var(--color-petrol-300) 28%, transparent);
+		stroke-width: 1.5;
+		stroke-dasharray: 2 7;
+		stroke-linecap: round;
+	}
+
+	.chord {
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-dasharray: 1;
+	}
+
+	.chord--paid {
+		stroke: var(--color-settled-soft);
+		stroke-dashoffset: 0;
+		opacity: 0.75;
+	}
+
+	.chord--open {
+		stroke-dashoffset: 1;
+	}
+
+	.core__disc {
+		fill: var(--color-petrol-900);
+		stroke: color-mix(in srgb, var(--color-petrol-300) 30%, transparent);
+		stroke-width: 1.5;
+	}
+
+	.core__label,
+	.core__unit {
+		fill: var(--color-petrol-200);
+		font-size: 15px;
+	}
+
+	.core__amount {
+		fill: #fff;
+		font-family: var(--font-display);
+		font-size: 46px;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		letter-spacing: -0.02em;
+	}
+
+	.core__held {
+		fill: var(--color-petrol-300);
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	.node circle {
+		fill: var(--color-petrol-800);
+		stroke-width: 2.5;
+	}
+
+	.node text {
+		fill: #fff;
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	.node .node__name {
+		fill: var(--color-petrol-100);
+		font-size: 13px;
+		font-weight: 500;
+	}
+
+	.node--beneficiary circle {
+		fill: var(--color-petrol-400);
+		stroke: #fff;
+	}
+
+	.node--beneficiary text:not(.node__name) {
+		fill: var(--color-petrol-950);
+		font-size: 22px;
+	}
+
+	.node--beneficiary .node__name {
+		fill: #fff;
+		font-weight: 700;
+	}
+
+	.node--paid .node__ring {
+		stroke: var(--color-settled-soft);
+	}
+
+	.node__badge circle {
+		fill: var(--color-settled-soft);
+		stroke: none;
+	}
+
+	.node__badge path {
+		fill: none;
+		stroke: var(--color-petrol-950);
+		stroke-width: 2.4;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.node--debt .node__ring {
+		stroke: var(--color-debt-soft);
+	}
+
+	.node .node__debt {
+		fill: var(--color-debt-soft);
+		font-size: 12.5px;
+		font-weight: 700;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		/* Declared (amber, drawing) then confirmed (green). */
+		.chord--paid {
+			animation: pay 0.75s ease-out var(--t) backwards;
+		}
+
+		.node--paid .node__ring {
+			animation: confirm 0.75s var(--t) backwards;
+		}
+
+		.node__badge {
+			animation: appear 0.75s var(--t) backwards;
+		}
+
+		/* Hervé waits as pending, then the round closes and his share becomes a debt. */
+		.node--debt .node__ring {
+			animation: overdue 0.6s var(--t) backwards;
+		}
+
+		.node--debt .node__debt {
+			animation: appear-late 0.6s var(--t) backwards;
+		}
+	}
+
+	@keyframes pay {
+		0% {
+			stroke: var(--color-pending-soft);
+			stroke-dashoffset: 1;
+		}
+		60% {
+			stroke: var(--color-pending-soft);
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: var(--color-settled-soft);
+			stroke-dashoffset: 0;
+		}
+	}
+
+	@keyframes confirm {
+		0%,
+		59% {
+			stroke: var(--color-pending-soft);
+			stroke-dasharray: 4 5;
+		}
+		60%,
+		100% {
+			stroke: var(--color-settled-soft);
+			stroke-dasharray: none;
+		}
+	}
+
+	@keyframes appear {
+		0%,
+		59% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes overdue {
+		0% {
+			stroke: var(--color-pending-soft);
+			stroke-dasharray: 4 5;
+		}
+		100% {
+			stroke: var(--color-debt-soft);
+			stroke-dasharray: none;
+		}
+	}
+
+	@keyframes appear-late {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+</style>
