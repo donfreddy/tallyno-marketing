@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Hero from "../components/Hero.astro";
+import Pains from "../components/Pains.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import NoCustody from "../components/NoCustody.astro";
+import Rules from "../components/Rules.astro";
+import WithoutApp from "../components/WithoutApp.astro";
+import Expenses from "../components/Expenses.astro";
+import Pricing from "../components/Pricing.astro";
+import Faq from "../components/Faq.astro";
+import FinalCta from "../components/FinalCta.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<Layout
+	title="Tallyno : ta tontine tourne, Tallyno tient les comptes"
+	description="Suis ta tontine et tes dépenses partagées entre proches. Chacun paie par Mobile Money comme d'habitude, Tallyno note qui a payé. L'argent ne passe jamais par nous."
+>
+	<a class="skip-link" href="#contenu">Aller au contenu</a>
+	<SiteHeader />
+	<main id="contenu">
+		<Hero />
+		<Pains />
+		<HowItWorks />
+		<NoCustody />
+		<Rules />
+		<Expenses />
+		<WithoutApp />
+		<Pricing />
+		<Faq />
+		<FinalCta />
+	</main>
+	<SiteFooter />
+</Layout>

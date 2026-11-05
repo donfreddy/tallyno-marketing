@@ -1,0 +1,61 @@
+---
+import StoreButtons from "./StoreButtons.astro";
+import QrCode from "./QrCode.astro";
+---
+
+<section class="final" aria-labelledby="final-title">
+	<div class="frame final__grid">
+		<div>
+			<h2 id="final-title">Le prochain tour peut commencer sans dispute.</h2>
+			<p>Installe Tallyno, crée ta tontine et invite les membres. Ton premier cycle est pour nous.</p>
+			<StoreButtons tone="dark" />
+		</div>
+		<div class="final__qr">
+			<QrCode label="Scanne pour installer Tallyno sur ton téléphone." />
+		</div>
+	</div>
+</section>
+
+<style>
+	.final {
+		padding-block: 4.5rem;
+		background: var(--color-petrol-900);
+		color: #fff;
+	}
+
+	.final__grid {
+		display: grid;
+		gap: 2rem;
+		align-items: center;
+	}
+
+	h2 {
+		margin: 0;
+		max-width: 18ch;
+		font-size: clamp(2.2rem, 1.4rem + 3.2vw, 3.8rem);
+		line-height: 1.02;
+		letter-spacing: -0.03em;
+	}
+
+	p {
+		max-width: 30rem;
+		margin: 1.1rem 0 1.75rem;
+		font-size: 1.12rem;
+		color: var(--color-petrol-100);
+	}
+
+	.final__qr {
+		display: none;
+		color: var(--color-petrol-100);
+	}
+
+	@media (min-width: 56rem) {
+		.final__grid {
+			grid-template-columns: minmax(0, 1fr) auto;
+		}
+
+		:global(html[data-os="desktop"]) .final__qr {
+			display: block;
+		}
+	}
+</style>

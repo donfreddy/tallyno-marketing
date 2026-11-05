@@ -1,0 +1,52 @@
+---
+import QRCode from "qrcode";
+import { site } from "../config";
+
+/** Build-time QR code pointing at /telecharger/, which routes each phone to its store. */
+interface Props {
+	label: string;
+}
+
+const { label } = Astro.props;
+const target = new URL("/telecharger/", site.url).href;
+const svg = await QRCode.toString(target, {
+	type: "svg",
+	margin: 0,
+	errorCorrectionLevel: "M",
+	color: { dark: "#003237", light: "#ffffff" },
+});
+---
+
+<figure class="qr">
+	<div class="qr__code" set:html={svg} role="img" aria-label={`QR code vers ${target}`} />
+	<figcaption>{label}</figcaption>
+</figure>
+
+<style>
+	.qr {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+		margin: 0;
+	}
+
+	.qr__code {
+		width: 5.5rem;
+		padding: 0.45rem;
+		background: #fff;
+		border-radius: 0.7rem;
+		flex: none;
+	}
+
+	.qr__code :global(svg) {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	figcaption {
+		max-width: 11rem;
+		font-size: 0.92rem;
+		line-height: 1.4;
+	}
+</style>

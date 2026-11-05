@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 2532" width="1170" height="2532" font-family="'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif">
+<!-- Placeholder screen: replace with a real capture at 1170x2532. -->
+<rect x="0" y="0" width="1170" height="2532" rx="0" fill="#f3f7f7"/>
+<text x="90" y="110" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">9:41</text>
+<rect x="970" y="82" width="110" height="40" rx="12" fill="#18181b"/>
+<path d="M96 262l-30 30 30 30" fill="none" stroke="#18181b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="150" y="310" font-size="64" font-weight="700" fill="#18181b" text-anchor="start">Coloc Makepe</text>
+<text x="150" y="372" font-size="40" font-weight="400" fill="#52525b" text-anchor="start">4 membres, 12 dépenses</text>
+<rect x="90" y="440" width="990" height="300" rx="44" fill="#003237"/>
+<text x="150" y="530" font-size="40" font-weight="500" fill="#B2E6EC" text-anchor="start">Tu dois</text>
+<text x="150" y="640" font-size="76" font-weight="700" fill="#fff" text-anchor="start">18 500 FCFA</text>
+<text x="150" y="700" font-size="36" font-weight="400" fill="#B2E6EC" text-anchor="start">à Freddy</text>
+<text x="90" y="820" font-size="50" font-weight="700" fill="#18181b" text-anchor="start">Soldes</text>
+<rect x="90" y="870" width="990" height="160" rx="32" fill="#fff"/>
+<circle cx="190" cy="950" r="56" fill="#D7F3F6"/><text x="190" y="970.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">F</text>
+<text x="280" y="940" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Freddy</text>
+<text x="1030" y="966" font-size="44" font-weight="700" fill="#059669" text-anchor="end">+42 000 FCFA</text>
+<text x="280" y="992" font-size="36" font-weight="400" fill="#52525b" text-anchor="start">a avancé le loyer</text>
+<rect x="90" y="1050" width="990" height="160" rx="32" fill="#fff"/>
+<circle cx="190" cy="1130" r="56" fill="#D7F3F6"/><text x="190" y="1150.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">M</text>
+<text x="280" y="1142" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Mireille</text>
+<text x="1030" y="1146" font-size="44" font-weight="700" fill="#e11d48" text-anchor="end">-11 500 FCFA</text>
+<rect x="90" y="1230" width="990" height="160" rx="32" fill="#fff"/>
+<circle cx="190" cy="1310" r="56" fill="#D7F3F6"/><text x="190" y="1330.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">J</text>
+<text x="280" y="1322" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Joël</text>
+<text x="1030" y="1326" font-size="44" font-weight="700" fill="#e11d48" text-anchor="end">-12 000 FCFA</text>
+<rect x="90" y="1410" width="990" height="160" rx="32" fill="#fff"/>
+<circle cx="190" cy="1490" r="56" fill="#D7F3F6"/><text x="190" y="1510.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">T</text>
+<text x="280" y="1502" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Toi</text>
+<text x="1030" y="1506" font-size="44" font-weight="700" fill="#e11d48" text-anchor="end">-18 500 FCFA</text>
+<text x="90" y="1650" font-size="50" font-weight="700" fill="#18181b" text-anchor="start">Dernières dépenses</text>
+<rect x="90" y="1700" width="990" height="160" rx="32" fill="#fff"/>
+<text x="140" y="1770" font-size="44" font-weight="600" fill="#18181b" text-anchor="start">Courses du mois</text>
+<text x="140" y="1822" font-size="36" font-weight="400" fill="#52525b" text-anchor="start">Payé par Mireille, à égalité</text>
+<text x="1030" y="1792" font-size="42" font-weight="700" fill="#18181b" text-anchor="end">46 000 FCFA</text>
+<rect x="90" y="1880" width="990" height="160" rx="32" fill="#fff"/>
+<text x="140" y="1950" font-size="44" font-weight="600" fill="#18181b" text-anchor="start">Facture ENEO</text>
+<text x="140" y="2002" font-size="36" font-weight="400" fill="#52525b" text-anchor="start">Payé par Freddy, au montant exact</text>
+<text x="1030" y="1972" font-size="42" font-weight="700" fill="#18181b" text-anchor="end">21 800 FCFA</text>
+<rect x="90" y="2272" width="990" height="150" rx="75" fill="#037A84"/><text x="585.0" y="2368" font-size="50" font-weight="700" fill="#fff" text-anchor="middle">Ajouter une dépense</text>
+</svg>

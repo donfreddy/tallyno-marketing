@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<Layout title="Page introuvable | Tallyno" description="Cette page n'existe pas ou a changé d'adresse." noindex>
+	<a class="skip-link" href="#contenu">Aller au contenu</a>
+	<SiteHeader />
+	<main id="contenu" class="lost">
+		<div class="frame">
+			<p class="lost__code amount" aria-hidden="true">404</p>
+			<h1>Cette page n'est pas dans le registre.</h1>
+			<p>Elle a peut-être changé d'adresse. Le reste du site, lui, est bien à jour.</p>
+			<a class="lost__home" href="/">Retour à l'accueil</a>
+		</div>
+	</main>
+	<SiteFooter />
+</Layout>
+
+<style>
+	.lost {
+		padding-block: 5rem 6rem;
+	}
+
+	.lost__code {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(4rem, 3rem + 6vw, 8rem);
+		font-weight: 700;
+		line-height: 1;
+		color: var(--color-petrol-200);
+	}
+
+	h1 {
+		margin: 1rem 0 0.6rem;
+		max-width: 20ch;
+		font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2.6rem);
+		line-height: 1.1;
+	}
+
+	p {
+		margin: 0;
+		color: var(--color-ink-2);
+	}
+
+	.lost__home {
+		display: inline-block;
+		margin-top: 1.75rem;
+		padding: 0.8rem 1.3rem;
+		border-radius: 999px;
+		background: var(--color-petrol-600);
+		color: #fff;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.lost__home:hover {
+		background: var(--color-petrol-700);
+	}
+</style>

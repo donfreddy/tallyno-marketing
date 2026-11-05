@@ -1,0 +1,107 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { site } from "../../config";
+
+/*
+ * Claims checked against the code (tallyno-api, tallyno-mobile) in November 2026:
+ * - phone sign-in through Firebase Auth; push through Firebase Messaging;
+ * - analytics through PostHog and Firebase Analytics;
+ * - notification channels IN_APP, PUSH, SMS, WHATSAPP, EMAIL exist in the schema;
+ * - referral codes exist; contacts are read on the device (fast_contacts).
+ * Not verifiable in the code, to confirm before launch:
+ * - which contact data, if any, leaves the device;
+ * - encryption at rest (depends on the hosting, not the code);
+ * - there is no account deletion endpoint yet: deletion is handled by e-mail,
+ *   and replacing the name in other members' history is a manual step.
+ * Share links: tallyno-api PublicSummaryController (@Public, token = access,
+ * 7-day TTL, levels SOCIAL / DETAILED / PRIVATE).
+ */
+const mail = `mailto:${site.email}`;
+---
+
+<LegalLayout
+	title="Politique de confidentialité"
+	description="Quelles données Tallyno collecte, pourquoi, avec qui elles sont partagées et comment supprimer ton compte."
+	updated="5 novembre 2026"
+>
+	<h2>1. Qui sommes-nous</h2>
+	<p>
+		Tallyno est édité par {site.studio.name}, à Douala (Cameroun). Cette politique explique quelles données nous
+		collectons quand tu utilises l'application ou le site, pourquoi, et quels sont tes droits.
+	</p>
+
+	<h2>2. Les données que nous collectons</h2>
+	<ul>
+		<li><strong>Ton numéro de téléphone</strong> : il sert d'identifiant pour ton compte et pour te connecter.</li>
+		<li><strong>Ton nom d'affichage</strong> : il est visible des membres de tes groupes.</li>
+		<li>
+			<strong>Les données de tes groupes</strong> : noms des groupes, membres, dépenses, cotisations, confirmations et
+			soldes.
+		</li>
+		<li><strong>Ton code de parrainage</strong> : il est généré automatiquement.</li>
+		<li>
+			<strong>Des données d'usage</strong> : les écrans consultés et les actions effectuées, pour comprendre ce qui
+			fonctionne et corriger ce qui ne fonctionne pas.
+		</li>
+		<li>
+			<strong>Un identifiant d'appareil pour les notifications</strong>, si tu les acceptes.
+		</li>
+	</ul>
+	<p>
+		Nous ne collectons <strong>aucune donnée bancaire ni aucune donnée de paiement Mobile Money</strong> : les
+		cotisations et les remboursements se font directement entre membres, en dehors de Tallyno. Nous n'utilisons pas ta
+		localisation.
+	</p>
+	<p>
+		Si tu choisis d'ajouter un membre depuis ton répertoire, l'application lit tes contacts sur ton téléphone pour te
+		permettre de le choisir. Cet accès n'est demandé que si tu utilises cette fonction, et tu peux le refuser.
+	</p>
+
+	<h2>3. Pourquoi nous les utilisons</h2>
+	<ul>
+		<li>Faire fonctionner l'application : groupes, dépenses, tontines, historique.</li>
+		<li>T'envoyer des notifications liées à tes groupes (dans l'application, par notification, SMS ou WhatsApp).</li>
+		<li>Améliorer Tallyno à partir de statistiques d'usage.</li>
+		<li>Te répondre si tu nous écris.</li>
+	</ul>
+	<p>Nous ne vendons jamais tes données. Nous ne les utilisons pas pour de la publicité.</p>
+
+	<h2>4. Avec qui elles sont partagées</h2>
+	<p>
+		Les membres de tes groupes voient ce que le groupe partage : ton nom, tes dépenses, tes cotisations et tes soldes
+		dans ce groupe.
+	</p>
+	<p>
+		Quand un membre partage un lien de récap, par exemple sur WhatsApp, toute personne qui reçoit ce lien peut ouvrir
+		le récap pendant 7 jours, sans compte. Selon le niveau choisi au moment du partage, le récap montre les noms
+		seuls, les montants de chacun, ou uniquement la part de la personne qui l'ouvre.
+	</p>
+	<p>Nous faisons appel à des prestataires techniques, tenus à la confidentialité :</p>
+	<ul>
+		<li>l'hébergement de nos serveurs ;</li>
+		<li>Google Firebase, pour la connexion par numéro de téléphone, les notifications et les statistiques d'usage ;</li>
+		<li>PostHog, pour les statistiques d'usage ;</li>
+		<li>les services d'envoi de SMS et de messages WhatsApp, quand ces notifications sont activées.</li>
+	</ul>
+
+	<h2>5. Sécurité</h2>
+	<p>
+		Les échanges entre l'application et nos serveurs sont chiffrés (HTTPS). Tallyno ne détient ni ne transfère aucun
+		fonds : même en cas d'incident, il n'y a pas d'argent à détourner chez nous.
+	</p>
+
+	<h2 id="suppression">6. Tes droits et la suppression de ton compte</h2>
+	<p>
+		Tu peux nous demander d'accéder à tes données, de les corriger ou de les supprimer. Pour supprimer ton compte,
+		écris-nous depuis l'adresse de ton choix à <a href={mail}>{site.email}</a> en indiquant le numéro de téléphone du
+		compte. Nous confirmons la demande sur ce numéro, puis nous supprimons le compte et les données personnelles
+		associées.
+	</p>
+	<p>
+		Les montants que tu as déclarés dans des groupes partagés font partie de l'historique des autres membres et y
+		restent après la suppression. Ton nom y est remplacé par une mention anonyme et ton numéro n'y apparaît plus.
+	</p>
+
+	<h2>7. Contact</h2>
+	<p>Pour toute question sur cette politique : <a href={mail}>{site.email}</a>.</p>
+</LegalLayout>

@@ -1,0 +1,85 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { site } from "../../config";
+
+const mail = `mailto:${site.email}`;
+---
+
+<LegalLayout
+	title="Conditions d'utilisation"
+	description="Les règles d'utilisation de Tallyno, l'application qui tient les comptes de ta tontine et de tes dépenses partagées."
+	updated="5 novembre 2026"
+>
+	<h2>1. Acceptation</h2>
+	<p>
+		En installant ou en utilisant Tallyno, tu acceptes ces conditions. Si tu ne les acceptes pas, n'utilise pas
+		l'application.
+	</p>
+
+	<h2>2. Ce que fait Tallyno</h2>
+	<p>
+		Tallyno, édité par {site.studio.name}, permet de suivre des tontines et des dépenses partagées entre proches :
+		créer des groupes, enregistrer des dépenses et des cotisations, et voir qui doit quoi à qui.
+	</p>
+	<p>Tallyno n'est :</p>
+	<ul>
+		<li>ni une banque ni un établissement de crédit ;</li>
+		<li>ni un prestataire de services de paiement ;</li>
+		<li>ni un service de transfert d'argent.</li>
+	</ul>
+	<p>
+		Tallyno enregistre et affiche ce que les membres déclarent et confirment. L'application ne détient, ne gère ni ne
+		transfère aucun fonds.
+	</p>
+
+	<h2>3. Ton compte</h2>
+	<p>
+		Ton compte est lié à un numéro de téléphone valide. Tu es responsable de ce qui est fait depuis ton compte. Tu
+		t'engages à fournir des informations exactes et à n'ajouter dans un groupe que des personnes qui y ont consenti.
+	</p>
+
+	<h2>4. Utilisation acceptable</h2>
+	<p>Il est interdit :</p>
+	<ul>
+		<li>d'utiliser Tallyno pour tromper d'autres membres ou à des fins frauduleuses ;</li>
+		<li>d'accéder sans autorisation aux comptes ou aux données d'autres utilisateurs ;</li>
+		<li>de perturber le fonctionnement de nos serveurs ;</li>
+		<li>d'utiliser l'application pour une activité illégale.</li>
+	</ul>
+
+	<h2>5. Offre gratuite et offres payantes</h2>
+	<p>
+		Tallyno propose une offre gratuite et des offres payantes, décrites sur la <a href="/#tarifs">page des tarifs</a>
+		et dans l'application. Les prix sont indiqués en FCFA.
+	</p>
+	<p>
+		Les paiements sont définitifs. Aucun remboursement n'est accordé pour une période entamée, sauf en cas de
+		défaillance technique de notre part.
+	</p>
+
+	<h2>6. Parrainage</h2>
+	<p>
+		Le programme de parrainage peut offrir des avantages pour l'invitation de nouveaux utilisateurs. Nous pouvons le
+		modifier ou l'arrêter avec un préavis de 30 jours. Tout abus (faux comptes, auto-parrainage) peut entraîner la
+		suspension du compte.
+	</p>
+
+	<h2>7. Responsabilité</h2>
+	<p>
+		Tallyno est fourni en l'état. Nous faisons notre possible pour que le service soit disponible et exact, sans pouvoir
+		le garantir en permanence.
+	</p>
+	<p>
+		Tallyno est un outil de suivi, pas un arbitre. Nous ne sommes pas responsables des litiges financiers entre les
+		membres d'un groupe.
+	</p>
+
+	<h2>8. Modifications</h2>
+	<p>
+		Nous pouvons modifier ces conditions. En cas de changement important, nous te prévenons dans l'application au moins
+		15 jours avant. Continuer à utiliser Tallyno ensuite vaut acceptation.
+	</p>
+
+	<h2>9. Contact</h2>
+	<p>Pour toute question sur ces conditions : <a href={mail}>{site.email}</a>.</p>
+</LegalLayout>

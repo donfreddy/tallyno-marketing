@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Logo from "../../components/Logo.astro";
+import StoreButtons from "../../components/StoreButtons.astro";
+import QrCode from "../../components/QrCode.astro";
+import { stores } from "../../config";
+---
+
+<Layout
+	title="Télécharger Tallyno"
+	description="Installe Tallyno sur Android ou iPhone et suis ta tontine sans cahier ni captures d'écran."
+	noindex
+>
+	<!-- Phones go straight to their store; desktops and unknown devices stay on the page. -->
+	<script is:inline define:vars={{ stores }}>
+		var ua = navigator.userAgent || "";
+		var isIos = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+		if (/Android/i.test(ua)) location.replace(stores.android);
+		// Skipped while the App Store id is still a placeholder.
+		else if (isIos && !/idX+$/.test(stores.ios)) location.replace(stores.ios);
+	</script>
+
+	<main class="get">
+		<div class="get__card">
+			<a href="/" aria-label="Accueil Tallyno"><Logo tone="light" size={34} /></a>
+			<h1>Installe Tallyno</h1>
+			<p>Choisis ta boutique. Sur ordinateur, scanne le code avec ton téléphone.</p>
+			<StoreButtons tone="dark" />
+			<div class="get__qr">
+				<QrCode label="Ce code ouvre la bonne boutique selon ton téléphone." />
+			</div>
+			<a class="get__back" href="/">Découvrir Tallyno</a>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.get {
+		min-height: 100svh;
+		display: grid;
+		place-items: center;
+		padding: 2rem var(--gutter);
+		background:
+			radial-gradient(circle at 50% 0%, var(--color-petrol-700), transparent 60%),
+			var(--color-petrol-900);
+		color: #fff;
+	}
+
+	.get__card {
+		display: grid;
+		justify-items: center;
+		gap: 1.25rem;
+		max-width: 26rem;
+		text-align: center;
+	}
+
+	h1 {
+		margin: 0.5rem 0 0;
+		font-size: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+		line-height: 1.05;
+	}
+
+	p {
+		margin: 0;
+		color: var(--color-petrol-100);
+	}
+
+	.get__qr {
+		display: none;
+		color: var(--color-petrol-100);
+		text-align: left;
+	}
+
+	:global(html[data-os="desktop"]) .get__qr {
+		display: block;
+	}
+
+	.get__back {
+		color: var(--color-petrol-200);
+		font-size: 0.95rem;
+	}
+</style>

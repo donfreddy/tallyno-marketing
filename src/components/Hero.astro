@@ -1,0 +1,114 @@
+---
+import TontineRing from "./TontineRing.astro";
+import StoreButtons from "./StoreButtons.astro";
+import QrCode from "./QrCode.astro";
+import { pricing } from "../config";
+---
+
+<section class="hero" aria-labelledby="hero-title">
+	<div class="frame hero__grid">
+		<div class="hero__text">
+			<h1 id="hero-title">Ta tontine tourne. Tallyno tient les comptes.</h1>
+			<p class="hero__lead">
+				Chacun paie le bénéficiaire par Mobile Money, comme d'habitude. Tallyno note qui a payé, qui a confirmé
+				et ce qui reste dû. L'argent ne passe jamais par nous.
+			</p>
+
+			<StoreButtons tone="dark" />
+
+			<p class="hero__offer">
+				{pricing.firstCycleFree ? "Ton premier cycle de tontine est gratuit, quel que soit le nombre de membres." : "Gratuit pour commencer."}
+			</p>
+
+			<div class="hero__qr">
+				<QrCode label="Sur ordinateur ? Scanne pour installer l'app sur ton téléphone." />
+			</div>
+		</div>
+
+		<div class="hero__visual">
+			<TontineRing />
+			<p class="hero__caption">Exemple : le 5e tour d'une tontine de 8 membres, à 25 000 FCFA la part.</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		overflow: hidden;
+		background: var(--color-petrol-900);
+		color: #fff;
+	}
+
+	/* Faint concentric rings: the table the members sit around. */
+	.hero::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: repeating-radial-gradient(
+			circle at 78% 52%,
+			transparent 0 46px,
+			color-mix(in srgb, var(--color-petrol-400) 7%, transparent) 46px 47px
+		);
+		pointer-events: none;
+	}
+
+	.hero__grid {
+		position: relative;
+		display: grid;
+		gap: 2.5rem;
+		padding-block: 3rem 3.5rem;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(2.6rem, 1.5rem + 4.6vw, 4.9rem);
+		line-height: 1;
+		letter-spacing: -0.035em;
+	}
+
+	.hero__lead {
+		max-width: 34rem;
+		margin: 1.4rem 0 2rem;
+		font-size: clamp(1.08rem, 1rem + 0.35vw, 1.25rem);
+		line-height: 1.55;
+		color: var(--color-petrol-100);
+	}
+
+	.hero__offer {
+		margin: 1.1rem 0 0;
+		font-size: 0.97rem;
+		color: var(--color-petrol-200);
+	}
+
+	.hero__qr {
+		display: none;
+		margin-top: 2rem;
+		color: var(--color-petrol-100);
+	}
+
+	.hero__visual {
+		min-width: 0;
+	}
+
+	.hero__caption {
+		margin: 0.75rem auto 0;
+		max-width: 26rem;
+		text-align: center;
+		font-size: 0.88rem;
+		color: var(--color-petrol-200);
+	}
+
+	@media (min-width: 60rem) {
+		.hero__grid {
+			grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+			align-items: center;
+			gap: 3rem;
+			padding-block: 5rem 5.5rem;
+		}
+
+		:global(html[data-os="desktop"]) .hero__qr {
+			display: block;
+		}
+	}
+</style>

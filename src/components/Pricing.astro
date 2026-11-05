@@ -1,0 +1,175 @@
+---
+import { formatAmount, pricing } from "../config";
+
+const c = pricing.currency;
+const plans = [
+	{
+		name: "Gratuit",
+		price: `0 ${c}`,
+		per: "pour commencer",
+		points: [
+			...(pricing.firstCycleFree ? ["Ton premier cycle de tontine, sans limite de membres"] : []),
+			`Ensuite, 1 tontine active jusqu'à ${pricing.freeMaxMembers} membres`,
+			`${pricing.freeSplitGroups} groupes de dépenses, jusqu'à ${pricing.freeMaxMembers} membres chacun`,
+			`${pricing.freeHistoryMonths} mois d'historique`,
+		],
+	},
+	{
+		name: "Pass Tontine",
+		price: `${formatAmount(pricing.tontinePass)} ${c}`,
+		per: "par cycle, payé une fois par l'organisateur",
+		featured: true,
+		points: [
+			"Membres illimités pour le cycle",
+			"Contrat d'honneur en PDF, prêt à imprimer",
+			"Ordre des tours tiré au sort, de façon vérifiable",
+			"Bilan du cycle en PDF et Excel",
+		],
+	},
+	{
+		name: "Pro",
+		price: `${formatAmount(pricing.proMonthly)} ${c}`,
+		per: `par mois, ou ${formatAmount(pricing.proYearly)} ${c} par an`,
+		points: [
+			"Groupes de dépenses illimités",
+			`Jusqu'à ${pricing.proMaxTontines} tontines actives en même temps`,
+			`Jusqu'à ${formatAmount(pricing.proMaxMembers)} membres par groupe`,
+			"Historique complet",
+		],
+	},
+];
+---
+
+<section id="tarifs" class="pricing" aria-labelledby="pricing-title">
+	<div class="frame">
+		<h2 id="pricing-title">Des tarifs simples, en FCFA.</h2>
+		<p class="pricing__intro">
+			L'organisateur paie, les membres n'ont rien à payer pour suivre la tontine. Pas d'abonnement caché : le Pass se
+			paie une fois par cycle.
+		</p>
+
+		<ul class="plans">
+			{
+				plans.map((plan) => (
+					<li class:list={["plan", { "plan--featured": plan.featured }]}>
+						<h3>{plan.name}</h3>
+						<p class="plan__price amount">{plan.price}</p>
+						<p class="plan__per">{plan.per}</p>
+						<ul class="plan__points">
+							{plan.points.map((point) => <li>{point}</li>)}
+						</ul>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.pricing {
+		padding-block: 4.5rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.pricing__intro {
+		max-width: 36rem;
+		margin: 0.9rem 0 0;
+		color: var(--color-ink-2);
+		font-size: 1.12rem;
+	}
+
+	.plans {
+		display: grid;
+		gap: 1rem;
+		margin: 2.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.plan {
+		padding: 1.6rem 1.5rem 1.75rem;
+		background: #fff;
+		border-radius: 1.1rem;
+		box-shadow: inset 0 0 0 1px var(--color-line);
+	}
+
+	.plan--featured {
+		background: var(--color-petrol-900);
+		color: #fff;
+		box-shadow: none;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.2rem;
+	}
+
+	.plan__price {
+		margin: 0.9rem 0 0;
+		font-family: var(--font-display);
+		font-size: 2.3rem;
+		font-weight: 700;
+		line-height: 1;
+		letter-spacing: -0.02em;
+	}
+
+	.plan__per {
+		margin: 0.4rem 0 0;
+		font-size: 0.92rem;
+		color: var(--color-ink-2);
+	}
+
+	.plan--featured .plan__per {
+		color: var(--color-petrol-200);
+	}
+
+	.plan__points {
+		margin: 1.4rem 0 0;
+		padding: 1.1rem 0 0;
+		list-style: none;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.plan--featured .plan__points {
+		border-top-color: color-mix(in srgb, #fff 18%, transparent);
+	}
+
+	.plan__points li {
+		position: relative;
+		padding-left: 1.6rem;
+		font-size: 0.97rem;
+	}
+
+	.plan__points li + li {
+		margin-top: 0.6rem;
+	}
+
+	.plan__points li::before {
+		content: "";
+		position: absolute;
+		left: 0.1rem;
+		top: 0.45em;
+		width: 0.85rem;
+		height: 0.45rem;
+		border-left: 2px solid var(--color-settled);
+		border-bottom: 2px solid var(--color-settled);
+		transform: rotate(-45deg);
+	}
+
+	.plan--featured .plan__points li::before {
+		border-color: var(--color-settled-soft);
+	}
+
+	@media (min-width: 56rem) {
+		.plans {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.25rem;
+			align-items: start;
+		}
+	}
+</style>

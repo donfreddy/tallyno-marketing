@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 2532" width="1170" height="2532" font-family="'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif">
+<!-- Placeholder screen: replace with a real capture at 1170x2532. -->
+<rect x="0" y="0" width="1170" height="2532" rx="0" fill="#f3f7f7"/>
+<text x="90" y="110" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">9:41</text>
+<rect x="970" y="82" width="110" height="40" rx="12" fill="#18181b"/>
+<path d="M96 262l-30 30 30 30" fill="none" stroke="#18181b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="150" y="310" font-size="64" font-weight="700" fill="#18181b" text-anchor="start">Tour 5 clôturé</text>
+<text x="150" y="372" font-size="40" font-weight="400" fill="#52525b" text-anchor="start">Fermé le 12 juin, une semaine après l'échéance</text>
+<rect x="90" y="440" width="990" height="260" rx="44" fill="#fff"/>
+<text x="150" y="530" font-size="40" font-weight="500" fill="#52525b" text-anchor="start">Esther a reçu</text>
+<text x="150" y="630" font-size="76" font-weight="700" fill="#059669" text-anchor="start">150 000 FCFA</text>
+<text x="90" y="820" font-size="50" font-weight="700" fill="#18181b" text-anchor="start">Reporté au cycle suivant</text>
+<rect x="90" y="860" width="990" height="230" rx="32" fill="#fff"/>
+<circle cx="190" cy="975" r="56" fill="#fef3c7"/><text x="190" y="995.16" font-size="53" font-weight="700" fill="#d97706" text-anchor="middle">H</text>
+<text x="280" y="950" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Hervé</text>
+<text x="280" y="1006" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA pour Esther</text>
+<rect x="770" y="940" width="270" height="72" rx="36" fill="#fef3c7"/><text x="905.0" y="989" font-size="36" font-weight="700" fill="#d97706" text-anchor="middle">En attente</text>
+<rect x="90" y="1130" width="990" height="300" rx="32" fill="#ECFAFB"/>
+<text x="150" y="1220" font-size="40" font-weight="600" fill="#00555C" text-anchor="start">Sa part le suit au cycle suivant.</text>
+<text x="150" y="1285" font-size="38" font-weight="400" fill="#00555C" text-anchor="start">Tant qu'elle n'est pas réglée, il ne peut</text>
+<text x="150" y="1340" font-size="38" font-weight="400" fill="#00555C" text-anchor="start">pas passer avant les membres à jour.</text>
+<text x="90" y="1540" font-size="50" font-weight="700" fill="#18181b" text-anchor="start">Prochain tour</text>
+<rect x="90" y="1580" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="1665" r="56" fill="#D7F3F6"/><text x="190" y="1685.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">F</text>
+<text x="280" y="1655" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Fabrice</text>
+<text x="280" y="1710" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">le 5 juillet</text>
+<rect x="90" y="2272" width="990" height="150" rx="75" fill="#037A84"/><text x="585.0" y="2368" font-size="50" font-weight="700" fill="#fff" text-anchor="middle">Voir le cycle</text>
+</svg>

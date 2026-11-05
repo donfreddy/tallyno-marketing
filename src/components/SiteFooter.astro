@@ -1,0 +1,91 @@
+---
+import Logo from "./Logo.astro";
+import { site } from "../config";
+---
+
+<footer class="footer">
+	<div class="frame footer__grid">
+		<div>
+			<Logo tone="light" size={26} />
+			<p class="footer__tag">L'argent entre proches, sans prise de tête.</p>
+			<p class="footer__studio">
+				Un produit <a href={site.studio.url}>{site.studio.name}</a>, Douala.
+			</p>
+		</div>
+		<nav aria-label="Liens du pied de page">
+			<ul>
+				<li><a href="/telecharger/">Télécharger l'app</a></li>
+				<li><a href="/#tarifs">Tarifs</a></li>
+				<li><a href="/confidentialite/">Confidentialité</a></li>
+				<li><a href="/conditions/">Conditions d'utilisation</a></li>
+				<li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="frame footer__base">
+		<p>© {new Date().getFullYear()} {site.studio.name}. Tallyno ne détient ni ne transfère aucun fonds.</p>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: var(--color-petrol-950);
+		color: var(--color-petrol-100);
+	}
+
+	.footer__grid {
+		display: grid;
+		gap: 2rem;
+		padding-block: 3rem 2rem;
+	}
+
+	.footer__tag {
+		margin: 0.9rem 0 0;
+		color: #fff;
+		font-family: var(--font-display);
+		font-size: 1.15rem;
+	}
+
+	.footer__studio {
+		margin: 0.4rem 0 0;
+		font-size: 0.92rem;
+	}
+
+	a {
+		color: var(--color-petrol-100);
+		text-decoration: none;
+		overflow-wrap: anywhere;
+	}
+
+	a:hover {
+		color: #fff;
+		text-decoration: underline;
+	}
+
+	ul {
+		display: grid;
+		gap: 0.55rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.footer__base {
+		padding-bottom: 2rem;
+		font-size: 0.85rem;
+		color: var(--color-petrol-200);
+	}
+
+	/* The rule sits on the paragraph so it lines up with the text, not the gutter. */
+	.footer__base p {
+		margin: 0;
+		padding-top: 1.25rem;
+		border-top: 1px solid color-mix(in srgb, #fff 12%, transparent);
+	}
+
+	@media (min-width: 48rem) {
+		.footer__grid {
+			grid-template-columns: minmax(0, 1fr) auto;
+		}
+	}
+</style>
