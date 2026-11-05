@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@import "@fontsource-variable/familjen-grotesk";
+@import "@fontsource-variable/dm-sans";
+
+/*
+ * Tallyno marketing tokens. Brand and state colors mirror the mobile app
+ * (tallyno-mobile/lib/core/theme/app_colors.dart): petrol for the brand,
+ * emerald for "settled", amber for "pending", rose for debts only.
+ */
+@theme {
+  --color-petrol-50: #ecfafb;
+  --color-petrol-100: #d7f3f6;
+  --color-petrol-200: #b2e6ec;
+  --color-petrol-300: #7dd3dc;
+  --color-petrol-400: #31b1be;
+  --color-petrol-500: #037a84;
+  --color-petrol-600: #016770;
+  --color-petrol-700: #00555c;
+  --color-petrol-800: #034349;
+  --color-petrol-900: #003237;
+  --color-petrol-950: #001d20;
+
+  --color-page: #f3f7f7;
+  --color-ink: #18181b;
+  --color-ink-2: #52525b;
+  --color-line: #dce6e7;
+
+  --color-settled: #059669;
+  --color-settled-soft: #34d399;
+  --color-pending: #f59e0b;
+  --color-pending-soft: #fcd34d;
+  --color-debt: #e11d48;
+  --color-debt-soft: #fb7185;
+
+  --font-display: "Familjen Grotesk Variable", "DM Sans Variable", system-ui, sans-serif;
+  --font-sans: "DM Sans Variable", system-ui, sans-serif;
+}
+
+:root {
+  --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+  --max: 74rem;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-feature-settings: "tnum" 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--color-petrol-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.frame {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--color-ink);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.amount {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.link {
+  color: var(--color-petrol-600);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.link:hover {
+  text-decoration-color: currentColor;
+}
