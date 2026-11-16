@@ -35,9 +35,6 @@ export const stores = {
  *   this many days from its first round.
  * - `foundersOffer`: groups that join during the beta get their whole first
  *   cycle. Turn it off when the beta ends.
- *
- * Automatic reminders are part of the Pass in the API but are not sold until
- * the SMS or WhatsApp channel is live: keep them off this site until then.
  */
 export const pricing = {
   currency: "FCFA",
