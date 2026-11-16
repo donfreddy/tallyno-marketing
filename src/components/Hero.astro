@@ -2,7 +2,7 @@
 import TontineRing from "./TontineRing.astro";
 import StoreButtons from "./StoreButtons.astro";
 import QrCode from "./QrCode.astro";
-import { pricing } from "../config";
+import { trialMonths } from "../config";
 import { orbitRatio } from "../data/tontine-ring";
 ---
 
@@ -18,7 +18,7 @@ import { orbitRatio } from "../data/tontine-ring";
 			<StoreButtons tone="dark" />
 
 			<p class="hero__offer">
-				{pricing.firstCycleFree ? "Ton premier cycle de tontine est gratuit, quel que soit le nombre de membres." : "Gratuit pour commencer."}
+				Gratuit, sans limite de membres. Le Pass Tontine est offert les {trialMonths} premiers mois de ta tontine.
 			</p>
 
 			<div class="hero__qr">

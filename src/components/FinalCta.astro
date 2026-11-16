@@ -1,13 +1,14 @@
 ---
 import StoreButtons from "./StoreButtons.astro";
 import QrCode from "./QrCode.astro";
+import { trialMonths } from "../config";
 ---
 
 <section class="final" aria-labelledby="final-title">
 	<div class="frame final__grid">
 		<div>
 			<h2 id="final-title">Le prochain tour peut commencer sans dispute.</h2>
-			<p>Installe Tallyno, crée ta tontine et invite les membres. Ton premier cycle est pour nous.</p>
+			<p>Installe Tallyno, crée ta tontine et invite les membres. C'est gratuit, et le Pass est offert les {trialMonths} premiers mois.</p>
 			<StoreButtons tone="dark" />
 		</div>
 		<div class="final__qr">
