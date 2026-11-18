@@ -14,7 +14,7 @@ importers:
       '@fontsource-variable/dm-sans':
         specifier: 5.3.0
         version: 5.3.0
-      '@fontsource-variable/familjen-grotesk':
+      '@fontsource-variable/space-grotesk':
         specifier: 5.3.0
         version: 5.3.0
       '@tailwindcss/vite':
@@ -431,8 +431,8 @@ packages:
   '@fontsource-variable/dm-sans@5.3.0':
     resolution: {integrity: sha512-BpUG5bqePiDFMBM4ZtLSlPdAIOM990uB1dlXzIf4aw21yQR7BmykedLXXXMqGWsR18aMLOsbWccwJNh3ztTQaA==}
 
-  '@fontsource-variable/familjen-grotesk@5.3.0':
-    resolution: {integrity: sha512-R9W0xEZRIHUV658cuOGRMAIcqX1QJ8p5/W6Boooa6zAw1BAozU//mr8C0VNggSE26/VHPwj2XNyMAG6yUJmjxA==}
+  '@fontsource-variable/space-grotesk@5.3.0':
+    resolution: {integrity: sha512-2IxmvfB08i9vnGB3Ym/AXvhRE+8XOjWMXIyDum03c+tPwH0FUoMNQfGpU8NXPxjbws0Vvss3AH0Zqt4oJBBAdw==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -2333,7 +2333,7 @@ snapshots:
 
   '@fontsource-variable/dm-sans@5.3.0': {}
 
-  '@fontsource-variable/familjen-grotesk@5.3.0': {}
+  '@fontsource-variable/space-grotesk@5.3.0': {}
 
   '@img/colour@1.1.0':
     optional: true

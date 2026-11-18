@@ -1,41 +1,62 @@
 ---
-import { formatAmount, pricing } from "../config";
+import { formatAmount, pricing, trialMonths } from "../config";
 
-const c = pricing.currency;
+const money = (amount: number) => `${formatAmount(amount)} ${pricing.currency}`;
+const { pass } = pricing;
+
 const plans = [
 	{
 		name: "Gratuit",
-		price: `0 ${c}`,
-		per: "pour commencer",
+		price: money(0),
+		per: "pour faire tourner ta tontine, sans limite de durée",
 		points: [
-			...(pricing.firstCycleFree ? ["Ton premier cycle de tontine, sans limite de membres"] : []),
-			`Ensuite, 1 tontine active jusqu'à ${pricing.freeMaxMembers} membres`,
-			`${pricing.freeSplitGroups} groupes de dépenses, jusqu'à ${pricing.freeMaxMembers} membres chacun`,
-			`${pricing.freeHistoryMonths} mois d'historique`,
+			"Dépenses partagées illimitées, tout compris",
+			`Organise ${pricing.freeOrganizedTontines} tontines en même temps, rejoins-en autant que tu veux`,
+			"Aucune limite de membres, tout l'historique",
+			"Amendes et bureau : président et trésorier",
+			"Membres sans l'app et liens d'invitation",
+			"Notifications et relances à la main",
 		],
 	},
 	{
 		name: "Pass Tontine",
-		price: `${formatAmount(pricing.tontinePass)} ${c}`,
-		per: "par cycle, payé une fois par l'organisateur",
+		price: `Dès ${money(pass.floor)}`,
+		per: `par cycle, ${money(pass.cap)} au plus, selon l'argent que la tontine fait circuler`,
 		featured: true,
 		points: [
-			"Membres illimités pour le cycle",
-			"Contrat d'honneur en PDF, prêt à imprimer",
+			"Contrat d'honneur signé, en PDF",
 			"Ordre des tours tiré au sort, de façon vérifiable",
 			"Bilan du cycle en PDF et Excel",
+			"Rappels automatiques par SMS et WhatsApp avant chaque échéance",
+			"Pour tous les membres du cycle",
 		],
 	},
+];
+
+const examples = [
+	...pass.examples.map((example) => ({
+		label: `${example.members} membres à ${money(example.contribution)} par mois`,
+		price: money(example.price),
+	})),
+	{ label: "Une très grande tontine", price: `${money(pass.cap)} au plus` },
+];
+
+const notes = [
 	{
-		name: "Pro",
-		price: `${formatAmount(pricing.proMonthly)} ${c}`,
-		per: `par mois, ou ${formatAmount(pricing.proYearly)} ${c} par an`,
-		points: [
-			"Groupes de dépenses illimités",
-			`Jusqu'à ${pricing.proMaxTontines} tontines actives en même temps`,
-			`Jusqu'à ${formatAmount(pricing.proMaxMembers)} membres par groupe`,
-			"Historique complet",
-		],
+		title: "Essai",
+		text: `Le Pass est offert les ${trialMonths} premiers mois du premier cycle de chaque tontine. Ensuite, il ne couvre que les tours restants, et tu ne paies que ceux-là.`,
+	},
+	...(pricing.foundersOffer
+		? [
+				{
+					title: "Groupes fondateurs",
+					text: "Ton groupe nous rejoint pendant la bêta ? Le Pass lui est offert sur tout son premier cycle.",
+				},
+			]
+		: []),
+	{
+		title: "Sans Pass",
+		text: "Rien ne s'arrête : la tontine continue, notifications et relances à la main comprises. Seuls le contrat, le tirage vérifiable, le bilan et les rappels par SMS et WhatsApp s'éteignent.",
 	},
 ];
 ---
@@ -44,8 +65,9 @@ const plans = [
 	<div class="frame">
 		<h2 id="pricing-title">Des tarifs simples, en FCFA.</h2>
 		<p class="pricing__intro">
-			L'organisateur paie, les membres n'ont rien à payer pour suivre la tontine. Pas d'abonnement caché : le Pass se
-			paie une fois par cycle.
+			Faire tourner ta tontine est gratuit, sans limite de membres. Le Pass Tontine ajoute les documents, la
+			preuve et les rappels automatiques : le groupe le paie une fois par cycle, et la caisse des amendes peut le régler. Tallyno ne touche jamais
+			l'argent de la tontine.
 		</p>
 
 		<ul class="plans">
@@ -58,6 +80,32 @@ const plans = [
 						<ul class="plan__points">
 							{plan.points.map((point) => <li>{point}</li>)}
 						</ul>
+					</li>
+				))
+			}
+			<li class="plan">
+				<h3>Le Pass, par exemple</h3>
+				<p class="plan__per">pour un cycle complet, une cotisation par mois</p>
+				<dl class="plan__examples">
+					{
+						examples.map((example) => (
+							<div>
+								<dt>{example.label}</dt>
+								<dd class="amount">{example.price}</dd>
+							</div>
+						))
+					}
+				</dl>
+				<p class="plan__note">Le prix exact s'affiche dans l'app, avant de payer.</p>
+			</li>
+		</ul>
+
+		<ul class="notes">
+			{
+				notes.map((note) => (
+					<li>
+						<strong>{note.title}</strong>
+						{note.text}
 					</li>
 				))
 			}
@@ -165,11 +213,65 @@ const plans = [
 		border-color: var(--color-settled-soft);
 	}
 
+	.plan__examples {
+		margin: 1.4rem 0 0;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.plan__examples div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1rem;
+		justify-content: space-between;
+		align-items: baseline;
+		padding-block: 0.7rem;
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	.plan__examples dt {
+		font-size: 0.97rem;
+	}
+
+	.plan__examples dd {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 700;
+	}
+
+	.plan__note {
+		margin: 1rem 0 0;
+		font-size: 0.92rem;
+		color: var(--color-ink-2);
+	}
+
+	.notes {
+		display: grid;
+		gap: 1rem 1.25rem;
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+		font-size: 0.97rem;
+		color: var(--color-ink-2);
+	}
+
+	.notes strong {
+		display: block;
+		margin-bottom: 0.2rem;
+		color: var(--color-ink);
+		font-family: var(--font-display);
+		font-weight: 600;
+	}
+
 	@media (min-width: 56rem) {
 		.plans {
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 1.25rem;
 			align-items: start;
+		}
+
+		.notes {
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(0, 1fr);
 		}
 	}
 </style>

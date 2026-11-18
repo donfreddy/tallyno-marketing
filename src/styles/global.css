@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@fontsource-variable/familjen-grotesk";
+@import "@fontsource-variable/space-grotesk";
 @import "@fontsource-variable/dm-sans";
 
 /*
@@ -32,7 +32,7 @@
   --color-debt: #e11d48;
   --color-debt-soft: #fb7185;
 
-  --font-display: "Familjen Grotesk Variable", "DM Sans Variable", system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", "DM Sans Variable", system-ui, sans-serif;
   --font-sans: "DM Sans Variable", system-ui, sans-serif;
 }
 

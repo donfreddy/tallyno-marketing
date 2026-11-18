@@ -1,5 +1,7 @@
 ---
-import { formatAmount, pricing, site } from "../config";
+import { formatAmount, pricing, site, trialMonths } from "../config";
+
+const money = (amount: number) => `${formatAmount(amount)} ${pricing.currency}`;
 
 const faqs = [
 	{
@@ -24,11 +26,15 @@ const faqs = [
 	},
 	{
 		q: "Combien ça coûte ?",
-		a: `${pricing.firstCycleFree ? "Ton premier cycle de tontine est gratuit, quel que soit le nombre de membres. " : ""}Ensuite, une tontine de ${pricing.freeMaxMembers} membres au plus reste gratuite. Au-delà, l'organisateur prend le Pass Tontine, ${formatAmount(pricing.tontinePass)} ${pricing.currency} par cycle, ou Pro s'il gère plusieurs tontines. Les membres n'ont rien à payer.`,
+		a: `Suivre une tontine ou des dépenses partagées est gratuit, sans limite de membres ni d'historique. Tu peux organiser ${pricing.freeOrganizedTontines} tontines en même temps, et rejoindre autant de tontines que tu veux. Le Pass Tontine ajoute le contrat d'honneur accepté par code SMS, le tirage vérifiable, le bilan du cycle et les rappels automatiques par SMS et WhatsApp. Il se paie une fois par cycle, par le groupe, de ${money(pricing.pass.floor)} à ${money(pricing.pass.cap)} selon l'argent que la tontine fait circuler. Il est offert les ${trialMonths} premiers mois du premier cycle.`,
+	},
+	{
+		q: "Que se passe-t-il sans Pass ?",
+		a: "Rien ne s'arrête. La tontine continue, avec ses cotisations, ses confirmations, ses amendes et tout son historique. Les notifications et les relances à la main marchent toujours. Seuls le contrat d'honneur, le tirage vérifiable, le bilan du cycle et les rappels automatiques par SMS et WhatsApp s'éteignent, tant que le groupe n'a pas pris le Pass pour ce cycle.",
 	},
 	{
 		q: "Quelles données collectez-vous ?",
-		a: "Ton numéro de téléphone pour ton compte, ton nom tel que tes groupes le voient, et les données de tes groupes. Aucune donnée bancaire, puisqu'aucun paiement ne passe par nous.",
+		a: "Ton numéro de téléphone pour ton compte, ton nom tel que tes groupes le voient, et les données de tes groupes. Aucune donnée bancaire : l'argent de tes groupes ne passe pas par nous, et le Pass se paie sur la page de notre prestataire Mobile Money.",
 	},
 ];
 ---
