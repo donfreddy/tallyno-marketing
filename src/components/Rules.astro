@@ -1,0 +1,95 @@
+---
+/** Consumer phrasing of rules the Tallyno engine enforces (tallyno-api/TONTINE.md). */
+const rules = [
+	{
+		title: "Pas de passe-droit dans l'ordre des tours",
+		text: "Quand le cycle recommence ou que l'ordre change, un membre qui a une dette ne passe jamais avant un membre à jour.",
+	},
+	{
+		title: "Une dette ne disparaît pas",
+		text: "Elle suit la personne d'un cycle à l'autre, jusqu'à ce qu'elle soit réglée ou que l'organisateur la solde.",
+	},
+	{
+		title: "Chacun reçoit une seule fois par cycle",
+		text: "Impossible d'inscrire deux fois le même bénéficiaire dans un cycle.",
+	},
+	{
+		title: "Un cycle terminé ne se réécrit pas",
+		text: "Recommencer crée un nouveau cycle. L'ancien reste exactement tel qu'il a été clos.",
+	},
+];
+---
+
+<section id="regles" class="rules" aria-labelledby="rules-title">
+	<div class="frame">
+		<h2 id="rules-title">Des règles que personne ne peut contourner.</h2>
+		<p class="rules__intro">
+			Elles sont appliquées par l'app, pas par la mémoire du trésorier.
+		</p>
+
+		<ul class="rules__list">
+			{
+				rules.map((rule) => (
+					<li>
+						<h3>{rule.title}</h3>
+						<p>{rule.text}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.rules {
+		padding-block: 4.5rem;
+	}
+
+	h2 {
+		margin: 0;
+		max-width: 18ch;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.rules__intro {
+		max-width: 34rem;
+		margin: 0.9rem 0 0;
+		color: var(--color-ink-2);
+		font-size: 1.12rem;
+	}
+
+	.rules__list {
+		display: grid;
+		margin: 2.5rem 0 0;
+		padding: 0;
+		list-style: none;
+		border-top: 2px solid var(--color-ink);
+	}
+
+	.rules__list li {
+		display: grid;
+		gap: 0.4rem;
+		padding-block: 1.4rem;
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	h3 {
+		margin: 0;
+		font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.45rem);
+		line-height: 1.2;
+	}
+
+	.rules__list p {
+		margin: 0;
+		color: var(--color-ink-2);
+	}
+
+	@media (min-width: 52rem) {
+		.rules__list li {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+			gap: 2.5rem;
+			align-items: baseline;
+		}
+	}
+</style>

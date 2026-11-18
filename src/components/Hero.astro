@@ -1,0 +1,167 @@
+---
+import TontineRing from "./TontineRing.astro";
+import StoreButtons from "./StoreButtons.astro";
+import QrCode from "./QrCode.astro";
+import { trialMonths } from "../config";
+import { orbitRatio } from "../data/tontine-ring";
+---
+
+<section class="hero" aria-labelledby="hero-title">
+	<div class="frame hero__grid">
+		<div class="hero__text">
+			<h1 id="hero-title">Ta tontine tourne. Tallyno tient les comptes.</h1>
+			<p class="hero__lead">
+				Chacun paie le bénéficiaire par Mobile Money, comme d'habitude. Tallyno note qui a payé, qui a confirmé
+				et ce qui reste dû. L'argent ne passe jamais par nous.
+			</p>
+
+			<StoreButtons tone="dark" />
+
+			<p class="hero__offer">
+				Gratuit, sans limite de membres. Le Pass Tontine est offert les {trialMonths} premiers mois de ta tontine.
+			</p>
+
+			<div class="hero__qr">
+				<QrCode label="Sur ordinateur ? Scanne pour installer l'app sur ton téléphone." />
+			</div>
+		</div>
+
+		<div class="hero__visual">
+			<div class="hero__ring" style={`--orbit-ratio: ${orbitRatio}`}>
+				<TontineRing />
+			</div>
+			<p class="hero__caption">Exemple : le 5e tour d'une tontine de 8 membres, à 25 000 FCFA la part.</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		overflow: hidden;
+		/* The background rings (.hero__ring::before) paint at z-index -1 inside
+		   this context: above the hero's background, below its text. */
+		isolation: isolate;
+		/* cqw below = the hero's own width. */
+		container-type: inline-size;
+		/* Rendered width of the tontine ring: the full column on phones (capped
+		   by the figure's own 30rem), a fixed track on desktop (see below). */
+		--ring-w: min(30rem, 100cqw - 2 * var(--gutter));
+		background: var(--color-petrol-900);
+		color: #fff;
+	}
+
+	.hero__grid {
+		position: relative;
+		display: grid;
+		gap: 2.5rem;
+		padding-block: 3rem 3.5rem;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(2.6rem, 1.5rem + 4.6vw, 4.9rem);
+		line-height: 1;
+		letter-spacing: -0.035em;
+	}
+
+	.hero__lead {
+		max-width: 34rem;
+		margin: 1.4rem 0 2rem;
+		font-size: clamp(1.08rem, 1rem + 0.35vw, 1.25rem);
+		line-height: 1.55;
+		color: var(--color-petrol-100);
+	}
+
+	.hero__offer {
+		margin: 1.1rem 0 0;
+		font-size: 0.97rem;
+		color: var(--color-petrol-200);
+	}
+
+	.hero__qr {
+		display: none;
+		margin-top: 2rem;
+		color: var(--color-petrol-100);
+	}
+
+	.hero__visual {
+		min-width: 0;
+	}
+
+	/* Faint concentric rings, the table the members sit around, drawn from the
+	   centre of the tontine ring itself and spaced at a quarter of the members'
+	   orbit, so the fourth ring runs under it. The layer is far larger than the
+	   hero, which clips it: the rings fill the whole background, text included.
+	   Its z-index -1 must resolve against .hero, so nothing between the two may
+	   create a stacking context (no transform, translate, opacity or z-index). */
+	.hero__ring {
+		--wave: calc(var(--ring-w) * var(--orbit-ratio) / 4);
+		position: relative;
+	}
+
+	.hero__ring::before {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		z-index: -1;
+		width: 260rem;
+		height: 260rem;
+		margin: -130rem 0 0 -130rem;
+		background: repeating-radial-gradient(
+			circle at center,
+			transparent 0 calc(var(--wave) - 1px),
+			var(--ring-line) calc(var(--wave) - 1px) var(--wave)
+		);
+		pointer-events: none;
+		--ring-line: color-mix(in srgb, var(--color-petrol-400) 7%, transparent);
+	}
+
+	.hero__caption {
+		margin: 0.75rem auto 0;
+		max-width: 26rem;
+		text-align: center;
+		font-size: 0.88rem;
+		color: var(--color-petrol-200);
+	}
+
+	@media (min-width: 60rem) {
+		/* The example leaves the frame on the right until its centre sits at
+		   78% of the hero width, where the original background rings were
+		   centred. Its column sits flush with the frame's right edge, so the
+		   bleed is the gap between that column's centre and 78cqw. The grid
+		   track only keeps the part that stays inside the frame: the text gets
+		   the rest. */
+		.hero {
+			--ring-w: min(30rem, 42cqw);
+			--bleed: max(0px, max(0px, (100cqw - var(--max)) / 2) + var(--gutter) + var(--ring-w) / 2 - 22cqw);
+		}
+
+		.hero__grid {
+			grid-template-columns: minmax(0, 1fr) calc(var(--ring-w) - var(--bleed));
+			align-items: center;
+			gap: 3rem;
+			padding-block: 5rem 5.5rem;
+		}
+
+		.hero__visual {
+			position: relative;
+			width: var(--ring-w);
+			margin-right: calc(-1 * var(--bleed));
+		}
+
+		/* The caption hangs below the ring, out of flow, so the grid centres the
+		   ring itself. */
+		.hero__caption {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+		}
+
+		:global(html[data-os="desktop"]) .hero__qr {
+			display: block;
+		}
+	}
+</style>

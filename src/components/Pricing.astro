@@ -1,0 +1,277 @@
+---
+import { formatAmount, pricing, trialMonths } from "../config";
+
+const money = (amount: number) => `${formatAmount(amount)} ${pricing.currency}`;
+const { pass } = pricing;
+
+const plans = [
+	{
+		name: "Gratuit",
+		price: money(0),
+		per: "pour faire tourner ta tontine, sans limite de durée",
+		points: [
+			"Dépenses partagées illimitées, tout compris",
+			`Organise ${pricing.freeOrganizedTontines} tontines en même temps, rejoins-en autant que tu veux`,
+			"Aucune limite de membres, tout l'historique",
+			"Amendes et bureau : président et trésorier",
+			"Membres sans l'app et liens d'invitation",
+			"Notifications et relances à la main",
+		],
+	},
+	{
+		name: "Pass Tontine",
+		price: `Dès ${money(pass.floor)}`,
+		per: `par cycle, ${money(pass.cap)} au plus, selon l'argent que la tontine fait circuler`,
+		featured: true,
+		points: [
+			"Contrat d'honneur signé, en PDF",
+			"Ordre des tours tiré au sort, de façon vérifiable",
+			"Bilan du cycle en PDF et Excel",
+			"Rappels automatiques par SMS et WhatsApp avant chaque échéance",
+			"Pour tous les membres du cycle",
+		],
+	},
+];
+
+const examples = [
+	...pass.examples.map((example) => ({
+		label: `${example.members} membres à ${money(example.contribution)} par mois`,
+		price: money(example.price),
+	})),
+	{ label: "Une très grande tontine", price: `${money(pass.cap)} au plus` },
+];
+
+const notes = [
+	{
+		title: "Essai",
+		text: `Le Pass est offert les ${trialMonths} premiers mois du premier cycle de chaque tontine. Ensuite, il ne couvre que les tours restants, et tu ne paies que ceux-là.`,
+	},
+	...(pricing.foundersOffer
+		? [
+				{
+					title: "Groupes fondateurs",
+					text: "Ton groupe nous rejoint pendant la bêta ? Le Pass lui est offert sur tout son premier cycle.",
+				},
+			]
+		: []),
+	{
+		title: "Sans Pass",
+		text: "Rien ne s'arrête : la tontine continue, notifications et relances à la main comprises. Seuls le contrat, le tirage vérifiable, le bilan et les rappels par SMS et WhatsApp s'éteignent.",
+	},
+];
+---
+
+<section id="tarifs" class="pricing" aria-labelledby="pricing-title">
+	<div class="frame">
+		<h2 id="pricing-title">Des tarifs simples, en FCFA.</h2>
+		<p class="pricing__intro">
+			Faire tourner ta tontine est gratuit, sans limite de membres. Le Pass Tontine ajoute les documents, la
+			preuve et les rappels automatiques : le groupe le paie une fois par cycle, et la caisse des amendes peut le régler. Tallyno ne touche jamais
+			l'argent de la tontine.
+		</p>
+
+		<ul class="plans">
+			{
+				plans.map((plan) => (
+					<li class:list={["plan", { "plan--featured": plan.featured }]}>
+						<h3>{plan.name}</h3>
+						<p class="plan__price amount">{plan.price}</p>
+						<p class="plan__per">{plan.per}</p>
+						<ul class="plan__points">
+							{plan.points.map((point) => <li>{point}</li>)}
+						</ul>
+					</li>
+				))
+			}
+			<li class="plan">
+				<h3>Le Pass, par exemple</h3>
+				<p class="plan__per">pour un cycle complet, une cotisation par mois</p>
+				<dl class="plan__examples">
+					{
+						examples.map((example) => (
+							<div>
+								<dt>{example.label}</dt>
+								<dd class="amount">{example.price}</dd>
+							</div>
+						))
+					}
+				</dl>
+				<p class="plan__note">Le prix exact s'affiche dans l'app, avant de payer.</p>
+			</li>
+		</ul>
+
+		<ul class="notes">
+			{
+				notes.map((note) => (
+					<li>
+						<strong>{note.title}</strong>
+						{note.text}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.pricing {
+		padding-block: 4.5rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.pricing__intro {
+		max-width: 36rem;
+		margin: 0.9rem 0 0;
+		color: var(--color-ink-2);
+		font-size: 1.12rem;
+	}
+
+	.plans {
+		display: grid;
+		gap: 1rem;
+		margin: 2.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.plan {
+		padding: 1.6rem 1.5rem 1.75rem;
+		background: #fff;
+		border-radius: 1.1rem;
+		box-shadow: inset 0 0 0 1px var(--color-line);
+	}
+
+	.plan--featured {
+		background: var(--color-petrol-900);
+		color: #fff;
+		box-shadow: none;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.2rem;
+	}
+
+	.plan__price {
+		margin: 0.9rem 0 0;
+		font-family: var(--font-display);
+		font-size: 2.3rem;
+		font-weight: 700;
+		line-height: 1;
+		letter-spacing: -0.02em;
+	}
+
+	.plan__per {
+		margin: 0.4rem 0 0;
+		font-size: 0.92rem;
+		color: var(--color-ink-2);
+	}
+
+	.plan--featured .plan__per {
+		color: var(--color-petrol-200);
+	}
+
+	.plan__points {
+		margin: 1.4rem 0 0;
+		padding: 1.1rem 0 0;
+		list-style: none;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.plan--featured .plan__points {
+		border-top-color: color-mix(in srgb, #fff 18%, transparent);
+	}
+
+	.plan__points li {
+		position: relative;
+		padding-left: 1.6rem;
+		font-size: 0.97rem;
+	}
+
+	.plan__points li + li {
+		margin-top: 0.6rem;
+	}
+
+	.plan__points li::before {
+		content: "";
+		position: absolute;
+		left: 0.1rem;
+		top: 0.45em;
+		width: 0.85rem;
+		height: 0.45rem;
+		border-left: 2px solid var(--color-settled);
+		border-bottom: 2px solid var(--color-settled);
+		transform: rotate(-45deg);
+	}
+
+	.plan--featured .plan__points li::before {
+		border-color: var(--color-settled-soft);
+	}
+
+	.plan__examples {
+		margin: 1.4rem 0 0;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.plan__examples div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1rem;
+		justify-content: space-between;
+		align-items: baseline;
+		padding-block: 0.7rem;
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	.plan__examples dt {
+		font-size: 0.97rem;
+	}
+
+	.plan__examples dd {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 700;
+	}
+
+	.plan__note {
+		margin: 1rem 0 0;
+		font-size: 0.92rem;
+		color: var(--color-ink-2);
+	}
+
+	.notes {
+		display: grid;
+		gap: 1rem 1.25rem;
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+		font-size: 0.97rem;
+		color: var(--color-ink-2);
+	}
+
+	.notes strong {
+		display: block;
+		margin-bottom: 0.2rem;
+		color: var(--color-ink);
+		font-family: var(--font-display);
+		font-weight: 600;
+	}
+
+	@media (min-width: 56rem) {
+		.plans {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.25rem;
+			align-items: start;
+		}
+
+		.notes {
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(0, 1fr);
+		}
+	}
+</style>

@@ -1,0 +1,178 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { site } from "../../config";
+
+/*
+ * Claims checked against the code (tallyno-api, tallyno-mobile) on 16 November 2026:
+ * - phone sign-in and SMS codes through Firebase Auth; push through Firebase Messaging;
+ * - analytics through PostHog (opaque user id only, never a name or a number) and
+ *   Firebase Analytics;
+ * - contacts: the app sends phone numbers only to POST /users/lookup, the API
+ *   compares them with registered numbers (Redis set, PostgreSQL fallback) and
+ *   stores nothing;
+ * - people without an account (ghosts): name and number given by a member, an
+ *   invitation SMS is sent to them;
+ * - Mobile Money numbers: shown to members who have to pay the owner (split
+ *   balances, P2P recipient, MAMBO treasurer);
+ * - sessions: device id, device name, created / last used dates, token stored hashed;
+ * - contract of honour: ContractSignature keeps the SMS check time and the
+ *   SHA-256 of the terms accepted; the PDF has no phone numbers;
+ * - Pass: paid on the Payunit page; Tallyno stores amount, status, reference;
+ * - referral: code, referrer and how (invite link, ghost number, code), credits;
+ * - share links: 7-day token, levels SOCIAL / DETAILED / PRIVATE;
+ * - account deletion in the app (SMS check, blockers, "Ancien membre",
+ *   domain events scrubbed, sessions closed, number quarantined 180 days,
+ *   optional reason stored without the user id).
+ * Not verifiable in the code, to confirm before launch: encryption at rest
+ * (depends on the hosting), the SMS provider finally chosen.
+ */
+const mail = `mailto:${site.email}`;
+---
+
+<LegalLayout
+	title="Politique de confidentialité"
+	description="Quelles données Tallyno collecte, pourquoi, avec qui elles sont partagées, combien de temps elles sont gardées et comment supprimer ton compte."
+	updated="16 novembre 2026"
+>
+	<h2>1. Qui sommes-nous</h2>
+	<p>
+		Tallyno est édité par {site.studio.name}, à Douala (Cameroun). Cette politique explique quelles données nous
+		collectons quand tu utilises l'application ou le site, pourquoi, et quels sont tes droits.
+	</p>
+
+	<h2>2. Les données que nous collectons</h2>
+	<ul>
+		<li>
+			<strong>Ton numéro de téléphone</strong> : il identifie ton compte. Tu te connectes avec un code reçu par SMS.
+		</li>
+		<li><strong>Ton prénom ou surnom</strong> : il est visible des membres de tes groupes.</li>
+		<li>
+			<strong>Les données de tes groupes</strong> : noms des groupes, membres, dépenses, cotisations, remboursements,
+			confirmations, soldes, amendes, ordre de passage et tirage au sort.
+		</li>
+		<li>
+			<strong>Tes numéros Mobile Money</strong>, si tu en ajoutes pour être payé : l'opérateur et le numéro.
+		</li>
+		<li>
+			<strong>Le contrat d'honneur</strong> d'une tontine, si tu l'acceptes : la date, la version du texte acceptée et
+			la confirmation par code SMS.
+		</li>
+		<li>
+			<strong>Tes appareils connectés</strong> : un identifiant d'appareil, son nom (par exemple « iPhone 14 »), la date
+			de connexion et la dernière activité, pour te montrer tes appareils et te permettre de les déconnecter.
+		</li>
+		<li><strong>Un identifiant pour les notifications</strong>, si tu les acceptes.</li>
+		<li>
+			<strong>Le parrainage</strong> : ton code, la personne qui t'a fait venir et comment (lien d'invitation, numéro
+			ajouté dans un groupe ou code), et les crédits obtenus.
+		</li>
+		<li>
+			<strong>Le paiement du Pass</strong>, quand tu en achètes un : le montant, le statut et la référence du paiement.
+		</li>
+		<li>
+			<strong>Des données d'usage</strong> : les écrans consultés et les actions effectuées, pour comprendre ce qui
+			fonctionne et corriger ce qui ne fonctionne pas.
+		</li>
+	</ul>
+
+	<h3>Les personnes qui n'ont pas Tallyno</h3>
+	<p>
+		Quand tu ajoutes dans un groupe quelqu'un qui n'a pas l'application, tu nous donnes son nom et son numéro. Nous lui
+		envoyons un SMS pour lui dire qu'il a été ajouté et l'inviter. Cette personne peut nous écrire pour que ses données
+		soient retirées.
+	</p>
+
+	<h3>Ton répertoire</h3>
+	<p>
+		Si tu choisis d'ajouter un membre depuis ton répertoire, l'application lit tes contacts sur ton téléphone. Pour te
+		montrer lesquels ont déjà Tallyno, elle envoie leurs numéros à nos serveurs, qui les comparent aux comptes existants
+		et ne les gardent pas. Les noms de tes contacts ne quittent pas ton téléphone. Cet accès n'est demandé que si tu
+		utilises cette fonction, et tu peux le refuser.
+	</p>
+
+	<h3>Ce que nous ne collectons pas</h3>
+	<p>
+		Nous ne collectons <strong>aucune donnée bancaire</strong>, ni ton code secret Mobile Money, ni ta localisation. Les
+		cotisations et les remboursements se font directement entre membres, en dehors de Tallyno. Quand tu paies un Pass, tu
+		le fais sur la page de notre prestataire de paiement : Tallyno ne voit jamais tes identifiants Mobile Money.
+	</p>
+
+	<h2>3. Pourquoi nous les utilisons</h2>
+	<ul>
+		<li>Faire fonctionner l'application : groupes, dépenses, tontines, historique, contrat d'honneur.</li>
+		<li>
+			T'envoyer des notifications liées à tes groupes : dans l'application et par notification. Un SMS est envoyé pour
+			inviter une personne sans compte, et pour un rappel important si tu ne reçois pas les notifications.
+		</li>
+		<li>Encaisser le Pass et l'activer pour ta tontine.</li>
+		<li>Protéger les comptes et le parrainage contre la fraude.</li>
+		<li>Améliorer Tallyno à partir de statistiques d'usage.</li>
+		<li>Te répondre si tu nous écris.</li>
+	</ul>
+	<p>Nous ne vendons jamais tes données. Nous ne les utilisons pas pour de la publicité.</p>
+
+	<h2>4. Avec qui elles sont partagées</h2>
+	<p>
+		Les membres de tes groupes voient ce que le groupe partage : ton nom, tes dépenses, tes cotisations, tes soldes et
+		tes amendes dans ce groupe. Ton numéro Mobile Money n'est montré qu'aux membres qui ont de l'argent à te verser, par
+		exemple quand tu es le bénéficiaire du tour ou le trésorier de la tontine.
+	</p>
+	<p>
+		Quand un membre partage un lien de récap, par exemple sur WhatsApp, toute personne qui reçoit ce lien peut ouvrir
+		le récap pendant 7 jours, sans compte. Selon le niveau choisi au moment du partage, le récap montre les noms
+		seuls, les montants de chacun, ou uniquement la part de la personne qui l'ouvre.
+	</p>
+	<p>
+		Un membre peut aussi partager le bilan d'un cycle (PDF ou tableur) ou le contrat d'honneur (PDF). Ces documents
+		contiennent les noms et les montants du groupe, jamais les numéros de téléphone.
+	</p>
+	<p>Nous faisons appel à des prestataires techniques, tenus à la confidentialité :</p>
+	<ul>
+		<li>l'hébergement de nos serveurs ;</li>
+		<li>
+			Google Firebase, pour la connexion par numéro de téléphone, les notifications et les statistiques d'usage ;
+		</li>
+		<li>PostHog, pour les statistiques d'usage : il ne reçoit ni ton nom ni ton numéro ;</li>
+		<li>notre prestataire d'envoi de SMS, et de messages WhatsApp quand ce canal sera ouvert ;</li>
+		<li>Payunit, pour le paiement du Pass par Mobile Money.</li>
+	</ul>
+
+	<h2>5. Combien de temps nous les gardons</h2>
+	<ul>
+		<li>Tes données sont gardées tant que ton compte existe.</li>
+		<li>Un lien de récap expire au bout de 7 jours.</li>
+		<li>
+			Après la suppression de ton compte, ton numéro reste bloqué pendant 180 jours : personne ne peut créer de compte
+			avec. Cela évite qu'un numéro remis en circulation par l'opérateur donne accès à ton historique.
+		</li>
+		<li>Les montants déclarés dans des groupes partagés restent dans l'historique des autres membres, sans ton nom.</li>
+	</ul>
+
+	<h2>6. Sécurité</h2>
+	<p>
+		Les échanges entre l'application et nos serveurs sont chiffrés (HTTPS). Les actions sensibles, comme accepter un
+		contrat d'honneur ou supprimer ton compte, demandent un code reçu par SMS. Tallyno ne détient ni ne transfère
+		l'argent des groupes : même en cas d'incident, il n'y a pas de cotisations à détourner chez nous.
+	</p>
+
+	<h2 id="suppression">7. Tes droits et la suppression de ton compte</h2>
+	<p>
+		Tu peux nous demander d'accéder à tes données, de les corriger ou de les supprimer, à
+		<a href={mail}>{site.email}</a>.
+	</p>
+	<p>
+		Tu peux supprimer ton compte toi-même dans l'application : <strong>Profil, puis Supprimer mon compte</strong>. Tu
+		confirmes avec un code reçu par SMS. Tant que de l'argent est en jeu, la suppression attend que ce soit réglé :
+		un solde non nul dans un groupe de dépenses, un cycle de tontine en cours, un rôle de trésorier, un retard de
+		cotisation ou une amende non réglée. L'application te dit quoi régler et où.
+	</p>
+	<p>
+		Après la suppression, ton nom est remplacé par « Ancien membre » dans l'historique des groupes, tes numéros en sont
+		retirés et tous tes appareils sont déconnectés. Si tu indiques pourquoi tu pars, cette réponse est gardée sans lien
+		avec toi. Tu peux aussi demander la suppression par e-mail en indiquant le numéro du compte : nous confirmons la
+		demande sur ce numéro.
+	</p>
+
+	<h2>8. Contact</h2>
+	<p>Pour toute question sur cette politique : <a href={mail}>{site.email}</a>.</p>
+</LegalLayout>

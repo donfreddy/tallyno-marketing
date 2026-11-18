@@ -1,0 +1,128 @@
+---
+import Phone from "./Phone.astro";
+import { screens } from "../data/screens";
+
+const uses = ["Sorties", "Colocation", "Voyage à Kribi", "Cadeau commun", "Courses"];
+---
+
+<section id="depenses" class="expenses" aria-labelledby="expenses-title">
+	<div class="frame expenses__grid">
+		<div class="expenses__text">
+			<h2 id="expenses-title">Et pour les dépenses du quotidien.</h2>
+			<p>
+				Quelqu'un avance, Tallyno calcule les parts : à égalité, au montant exact ou en pourcentage. Partage le récap
+				dans le groupe, chacun voit ce qu'il doit et à qui.
+			</p>
+			<ul class="uses" aria-label="Exemples d'usage">
+				{uses.map((use) => <li>{use}</li>)}
+			</ul>
+
+			<!-- A shared recap, written in the neutral tone of TALLYNO_TONE.md: never names who has not paid. -->
+			<div class="recap" aria-label="Exemple de récapitulatif partagé dans un groupe">
+				<p class="recap__title">Sortie resto, samedi soir</p>
+				<p>Total : <span class="amount">32 000 FCFA</span>, avancé par Freddy</p>
+				<p>3 paiements confirmés, 2 en attente</p>
+				<p class="recap__link">Voir ta part : lien Tallyno</p>
+			</div>
+
+			<p class="soon"><strong>Bientôt :</strong> les collectes pour un événement, un mariage ou un anniversaire.</p>
+		</div>
+
+		<div class="expenses__screen">
+			<Phone screen={screens.balances} />
+		</div>
+	</div>
+</section>
+
+<style>
+	.expenses {
+		padding-block: 4.5rem;
+		background: #fff;
+		border-block: 1px solid var(--color-line);
+	}
+
+	.expenses__grid {
+		display: grid;
+		gap: 3rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.expenses__text > p {
+		max-width: 32rem;
+		margin: 1rem 0 0;
+		font-size: 1.12rem;
+		color: var(--color-ink-2);
+	}
+
+	.uses {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 1.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.uses li {
+		padding: 0.35rem 0.85rem;
+		border-radius: 999px;
+		background: var(--color-petrol-50);
+		color: var(--color-petrol-800);
+		font-size: 0.92rem;
+		font-weight: 600;
+	}
+
+	.recap {
+		max-width: 22rem;
+		margin-top: 2rem;
+		padding: 1rem 1.1rem;
+		border-radius: 1rem 1rem 1rem 0.25rem;
+		background: var(--color-page);
+		box-shadow: inset 0 0 0 1px var(--color-line);
+		font-size: 0.95rem;
+	}
+
+	.recap p {
+		margin: 0;
+	}
+
+	.recap__title {
+		font-weight: 700;
+		margin-bottom: 0.35rem !important;
+	}
+
+	.recap__link {
+		margin-top: 0.5rem !important;
+		color: var(--color-petrol-600);
+		font-weight: 600;
+	}
+
+	.soon {
+		margin: 2rem 0 0;
+		font-size: 0.97rem;
+		color: var(--color-ink-2);
+	}
+
+	.expenses__screen {
+		max-width: 16rem;
+		width: 100%;
+		justify-self: center;
+	}
+
+	@media (min-width: 52rem) {
+		.expenses__grid {
+			grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+			gap: 4rem;
+			align-items: center;
+		}
+
+		.expenses__screen {
+			max-width: 18rem;
+		}
+	}
+</style>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 2532" width="1170" height="2532" font-family="'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif">
+<!-- Placeholder screen: replace with a real capture at 1170x2532. -->
+<rect x="0" y="0" width="1170" height="2532" rx="0" fill="#f3f7f7"/>
+<text x="90" y="110" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">9:41</text>
+<rect x="970" y="82" width="110" height="40" rx="12" fill="#18181b"/>
+<path d="M96 262l-30 30 30 30" fill="none" stroke="#18181b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="150" y="310" font-size="64" font-weight="700" fill="#18181b" text-anchor="start">Tour 5 sur 8</text>
+<text x="150" y="372" font-size="40" font-weight="400" fill="#52525b" text-anchor="start">Bénéficiaire : Esther, le 5 juin</text>
+<rect x="90" y="440" width="990" height="330" rx="44" fill="#003237"/>
+<text x="150" y="530" font-size="40" font-weight="500" fill="#B2E6EC" text-anchor="start">Reçu par Esther</text>
+<text x="150" y="640" font-size="70" font-weight="700" fill="#fff" text-anchor="start">125 000 / 175 000 FCFA</text>
+<rect x="150" y="690" width="870" height="24" rx="12" fill="#00555C"/>
+<rect x="150" y="690" width="621" height="24" rx="12" fill="#31B1BE"/>
+<rect x="90" y="850" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="935" r="56" fill="#D7F3F6"/><text x="190" y="955.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">A</text>
+<text x="280" y="926" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Aïcha</text>
+<text x="280" y="980" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA</text>
+<circle cx="700" cy="935" r="14" fill="#059669"/>
+<text x="730" y="949" font-size="36" font-weight="600" fill="#059669" text-anchor="start">Confirmé</text>
+<rect x="90" y="1040" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="1125" r="56" fill="#D7F3F6"/><text x="190" y="1145.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">B</text>
+<text x="280" y="1116" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Brice</text>
+<text x="280" y="1170" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA</text>
+<circle cx="700" cy="1125" r="14" fill="#059669"/>
+<text x="730" y="1139" font-size="36" font-weight="600" fill="#059669" text-anchor="start">Confirmé</text>
+<rect x="90" y="1230" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="1315" r="56" fill="#D7F3F6"/><text x="190" y="1335.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">C</text>
+<text x="280" y="1306" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Carine</text>
+<text x="280" y="1360" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA</text>
+<circle cx="700" cy="1315" r="14" fill="#059669"/>
+<text x="730" y="1329" font-size="36" font-weight="600" fill="#059669" text-anchor="start">Confirmé</text>
+<rect x="90" y="1420" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="1505" r="56" fill="#D7F3F6"/><text x="190" y="1525.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">D</text>
+<text x="280" y="1496" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Didier</text>
+<text x="280" y="1550" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA</text>
+<circle cx="700" cy="1505" r="14" fill="#d97706"/>
+<text x="730" y="1519" font-size="36" font-weight="600" fill="#d97706" text-anchor="start">Déclaré, à confirmer</text>
+<rect x="90" y="1610" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="1695" r="56" fill="#D7F3F6"/><text x="190" y="1715.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">F</text>
+<text x="280" y="1686" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Fabrice</text>
+<text x="280" y="1740" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA</text>
+<circle cx="700" cy="1695" r="14" fill="#059669"/>
+<text x="730" y="1709" font-size="36" font-weight="600" fill="#059669" text-anchor="start">Confirmé</text>
+<rect x="90" y="1800" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="1885" r="56" fill="#D7F3F6"/><text x="190" y="1905.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">G</text>
+<text x="280" y="1876" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Grâce</text>
+<text x="280" y="1930" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA</text>
+<circle cx="700" cy="1885" r="14" fill="#059669"/>
+<text x="730" y="1899" font-size="36" font-weight="600" fill="#059669" text-anchor="start">Confirmé</text>
+<rect x="90" y="1990" width="990" height="170" rx="32" fill="#fff"/>
+<circle cx="190" cy="2075" r="56" fill="#D7F3F6"/><text x="190" y="2095.16" font-size="53" font-weight="700" fill="#00555C" text-anchor="middle">H</text>
+<text x="280" y="2066" font-size="46" font-weight="600" fill="#18181b" text-anchor="start">Hervé</text>
+<text x="280" y="2120" font-size="38" font-weight="400" fill="#52525b" text-anchor="start">25 000 FCFA</text>
+<circle cx="700" cy="2075" r="14" fill="#52525b"/>
+<text x="730" y="2089" font-size="36" font-weight="600" fill="#52525b" text-anchor="start">En attente</text>
+<rect x="90" y="2272" width="990" height="150" rx="75" fill="#037A84"/><text x="585.0" y="2368" font-size="50" font-weight="700" fill="#fff" text-anchor="middle">J'ai payé ma part</text>
+</svg>

@@ -1,0 +1,96 @@
+---
+import { stores } from "../config";
+
+interface Props {
+	tone?: "dark" | "light";
+}
+
+const { tone = "light" } = Astro.props;
+---
+
+<!-- The script in Layout sets html[data-os]; the visitor's own store moves first. -->
+<div class:list={["stores", `stores--${tone}`]}>
+	<a class="store store--android" href={stores.android} data-store="android">
+		<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.6L21 12.6c.4-.2.4-.9 0-1.1L4.9 2.2c-.4-.2-.9.1-.9.6Z" /></svg>
+		<span><small>Disponible sur</small>Google Play</span>
+	</a>
+	<a class="store store--ios" href={stores.ios} data-store="ios">
+		<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.5 1.3 0 1.7-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.2-1.2 3-2.5.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-4.3ZM14 5.2c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4Z" /></svg>
+		<span><small>Télécharger sur</small>l'App Store</span>
+	</a>
+</div>
+
+<style>
+	.stores {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	:global(html[data-os="ios"]) .store--ios {
+		order: -1;
+	}
+
+	.store {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.7rem;
+		min-height: 3.4rem;
+		padding: 0.55rem 1.25rem 0.55rem 1rem;
+		border-radius: 0.9rem;
+		font-weight: 700;
+		font-size: 1.05rem;
+		line-height: 1.15;
+		text-decoration: none;
+		transition:
+			transform 0.15s ease,
+			background-color 0.15s ease;
+	}
+
+	.store:hover {
+		transform: translateY(-1px);
+	}
+
+	.store svg {
+		width: 1.45rem;
+		height: 1.45rem;
+		fill: currentColor;
+		flex: none;
+	}
+
+	.store span {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.store small {
+		font-weight: 500;
+		font-size: 0.75rem;
+		opacity: 0.8;
+	}
+
+	.stores--dark .store {
+		background: #fff;
+		color: var(--color-petrol-900);
+	}
+
+	.stores--dark .store:hover {
+		background: var(--color-petrol-50);
+	}
+
+	.stores--light .store {
+		background: var(--color-petrol-900);
+		color: #fff;
+	}
+
+	.stores--light .store:hover {
+		background: var(--color-petrol-800);
+	}
+
+	@media (max-width: 26rem) {
+		.store {
+			flex: 1 1 100%;
+			justify-content: center;
+		}
+	}
+</style>

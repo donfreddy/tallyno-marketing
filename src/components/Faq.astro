@@ -1,0 +1,149 @@
+---
+import { formatAmount, pricing, site, trialMonths } from "../config";
+
+const money = (amount: number) => `${formatAmount(amount)} ${pricing.currency}`;
+
+const faqs = [
+	{
+		q: "Tallyno garde-t-il mon argent ?",
+		a: "Non, jamais. Tu paies directement la personne qui reçoit le tour, avec ton compte Mobile Money habituel. Tallyno enregistre le paiement et la confirmation, rien d'autre.",
+	},
+	{
+		q: "Comment je paie ma cotisation ?",
+		a: "Comme d'habitude : par MTN MoMo ou Orange Money, au bénéficiaire du tour. Ensuite, tu déclares le paiement dans Tallyno et le bénéficiaire le confirme quand il l'a reçu.",
+	},
+	{
+		q: "Et si quelqu'un ne paie pas ?",
+		a: "Une semaine après l'échéance, le tour se ferme et sa part devient une dette, visible de tout le groupe. Elle le suit au cycle suivant, et tant qu'elle n'est pas réglée, il ne peut pas passer avant les membres à jour.",
+	},
+	{
+		q: "Tout le monde doit-il installer l'app ?",
+		a: "Pour une tontine, chaque membre utilise l'app pour déclarer et confirmer ses paiements, sauf en mode trésorier : le trésorier peut alors enregistrer les cotisations des membres qui ne l'ont pas. Pour une dépense partagée, non : ajoute n'importe qui par son numéro, il voit sa part grâce au lien du récap, dans son navigateur.",
+	},
+	{
+		q: "Notre tontine passe par un trésorier qui collecte. Ça marche ?",
+		a: "Oui. En mode trésorier, c'est lui qui enregistre les cotisations, en espèces ou par Mobile Money, puis les reverse au bénéficiaire. Tout le groupe voit le même registre.",
+	},
+	{
+		q: "Combien ça coûte ?",
+		a: `Suivre une tontine ou des dépenses partagées est gratuit, sans limite de membres ni d'historique. Tu peux organiser ${pricing.freeOrganizedTontines} tontines en même temps, et rejoindre autant de tontines que tu veux. Le Pass Tontine ajoute le contrat d'honneur accepté par code SMS, le tirage vérifiable, le bilan du cycle et les rappels automatiques par SMS et WhatsApp. Il se paie une fois par cycle, par le groupe, de ${money(pricing.pass.floor)} à ${money(pricing.pass.cap)} selon l'argent que la tontine fait circuler. Il est offert les ${trialMonths} premiers mois du premier cycle.`,
+	},
+	{
+		q: "Que se passe-t-il sans Pass ?",
+		a: "Rien ne s'arrête. La tontine continue, avec ses cotisations, ses confirmations, ses amendes et tout son historique. Les notifications et les relances à la main marchent toujours. Seuls le contrat d'honneur, le tirage vérifiable, le bilan du cycle et les rappels automatiques par SMS et WhatsApp s'éteignent, tant que le groupe n'a pas pris le Pass pour ce cycle.",
+	},
+	{
+		q: "Quelles données collectez-vous ?",
+		a: "Ton numéro de téléphone pour ton compte, ton nom tel que tes groupes le voient, et les données de tes groupes. Aucune donnée bancaire : l'argent de tes groupes ne passe pas par nous, et le Pass se paie sur la page de notre prestataire Mobile Money.",
+	},
+];
+---
+
+<section id="faq" class="faq" aria-labelledby="faq-title">
+	<div class="frame faq__grid">
+		<h2 id="faq-title">Les questions qu'on nous pose.</h2>
+		<div class="faq__list">
+			{
+				faqs.map((faq) => (
+					<details>
+						<summary>{faq.q}</summary>
+						<p>{faq.a}</p>
+					</details>
+				))
+			}
+			<p class="faq__more">
+				Une autre question ? Lis notre <a class="link" href="/confidentialite/">politique de confidentialité</a> ou{" "}
+				<a class="link" href={`mailto:${site.email}`}>écris-nous</a>.
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.faq {
+		padding-block: 4.5rem;
+		background: #fff;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.faq__grid {
+		display: grid;
+		gap: 2rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.faq__list {
+		border-top: 2px solid var(--color-ink);
+	}
+
+	details {
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	summary {
+		position: relative;
+		padding: 1.15rem 2.5rem 1.15rem 0;
+		cursor: pointer;
+		list-style: none;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 1.15rem;
+		line-height: 1.3;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	/* Plus sign that turns into a minus when open. */
+	summary::before,
+	summary::after {
+		content: "";
+		position: absolute;
+		right: 0.35rem;
+		top: 50%;
+		width: 1rem;
+		height: 2px;
+		background: var(--color-petrol-600);
+		transition: transform 0.2s ease;
+	}
+
+	summary::after {
+		transform: rotate(90deg);
+	}
+
+	details[open] summary::after {
+		transform: rotate(0deg);
+	}
+
+	details p {
+		max-width: 38rem;
+		margin: 0;
+		padding-bottom: 1.25rem;
+		color: var(--color-ink-2);
+	}
+
+	.faq__more {
+		margin: 1.5rem 0 0;
+		color: var(--color-ink-2);
+	}
+
+	@media (min-width: 56rem) {
+		.faq__grid {
+			grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+			gap: 4rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		summary::before,
+		summary::after {
+			transition: none;
+		}
+	}
+</style>

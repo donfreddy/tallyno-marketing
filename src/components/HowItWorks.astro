@@ -1,0 +1,129 @@
+---
+import Phone from "./Phone.astro";
+import { screens } from "../data/screens";
+
+const steps = [
+	{
+		title: "Crée la tontine",
+		text: "Montant de la part, fréquence, ordre des tours. Invite les membres par leur numéro de téléphone : chacun rejoint la tontine depuis l'app.",
+		screen: screens.create,
+	},
+	{
+		title: "Chacun déclare, le bénéficiaire confirme",
+		text: "Tu paies le bénéficiaire par MTN MoMo ou Orange Money, puis tu le déclares dans Tallyno. Il confirme quand il a reçu. Si ton groupe passe par un trésorier, c'est lui qui enregistre les cotisations, y compris celles des membres qui n'ont pas l'app.",
+		screen: screens.round,
+	},
+	{
+		title: "À la clôture, tout est clair",
+		text: "Une semaine après l'échéance, le tour se ferme. Ce qui n'a pas été payé devient une dette visible de tout le groupe, qui suit la personne jusqu'à ce qu'elle la règle.",
+		screen: screens.debts,
+	},
+];
+---
+
+<section id="comment" class="how" aria-labelledby="how-title">
+	<div class="frame">
+		<h2 id="how-title">Comment ça marche</h2>
+		<p class="how__intro">Trois étapes, et plus personne n'a besoin de tenir le cahier.</p>
+
+		<ol class="steps">
+			{
+				steps.map((step, index) => (
+					<li class="step">
+						<div class="step__text">
+							<span class="step__num" aria-hidden="true">{index + 1}</span>
+							<h3>{step.title}</h3>
+							<p>{step.text}</p>
+						</div>
+						<div class="step__screen">
+							<Phone screen={step.screen} />
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.how {
+		padding-block: 4.5rem;
+		background: #fff;
+		border-block: 1px solid var(--color-line);
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.how__intro {
+		margin: 0.75rem 0 0;
+		color: var(--color-ink-2);
+		font-size: 1.12rem;
+	}
+
+	.steps {
+		display: grid;
+		gap: 3.5rem;
+		margin: 3rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.step {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 9.5rem);
+		gap: 1.25rem;
+		align-items: start;
+	}
+
+	.step__num {
+		display: inline-grid;
+		place-items: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 50%;
+		background: var(--color-petrol-600);
+		color: #fff;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1.15rem;
+	}
+
+	h3 {
+		margin: 0.9rem 0 0.5rem;
+		font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.6rem);
+		line-height: 1.15;
+	}
+
+	.step p {
+		margin: 0;
+		color: var(--color-ink-2);
+	}
+
+	@media (min-width: 52rem) {
+		.steps {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 2.5rem;
+		}
+
+		/* Desktop: the three phones sit on one line, text above, like a storyboard. */
+		.step {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto 1fr;
+			gap: 2rem;
+		}
+
+		/* Phones share a baseline even when one step's text runs longer. */
+		.step__screen {
+			max-width: 15.5rem;
+			align-self: end;
+		}
+
+		.step__text p {
+			max-width: 21rem;
+		}
+	}
+</style>

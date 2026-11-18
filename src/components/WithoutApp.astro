@@ -1,0 +1,125 @@
+---
+import { site } from "../config";
+
+const host = new URL(site.url).host;
+---
+
+<section class="noapp" aria-labelledby="noapp-title">
+	<div class="frame noapp__grid">
+		<div>
+			<h2 id="noapp-title">Même sans l'app.</h2>
+			<p>
+				Pour une dépense partagée, ajoute n'importe qui par son numéro, même s'il n'a pas Tallyno. Partage le récap
+				sur WhatsApp : chacun ouvre le lien et voit sa part dans son navigateur. Le jour où il installe l'app avec ce
+				numéro, il retrouve son historique.
+			</p>
+			<p>
+				Pour une tontine, chaque membre déclare ses paiements dans l'app. Si ton groupe passe par un trésorier, il
+				peut aussi suivre les cotisations des membres qui ne l'ont pas.
+			</p>
+		</div>
+
+		<!-- Echoes the PRIVATE recap page tallyno-web serves at /s/:token (the viewer's own share). -->
+		<div class="browser" aria-hidden="true">
+			<div class="browser__bar"><span>{host}/s/…</span></div>
+			<div class="browser__body">
+				<p class="browser__group">Sortie resto, samedi soir</p>
+				<p class="browser__label">Ta part</p>
+				<p class="browser__amount amount">6 400 FCFA</p>
+				<p class="browser__to">sur 32 000 FCFA, avancés par Freddy</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.noapp {
+		padding-block: 4rem;
+		background: var(--color-petrol-50);
+		border-block: 1px solid var(--color-line);
+	}
+
+	.noapp__grid {
+		display: grid;
+		gap: 2.5rem;
+		align-items: center;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+		line-height: 1.05;
+	}
+
+	.noapp__grid > div > p {
+		max-width: 32rem;
+		margin: 1rem 0 0;
+		font-size: 1.12rem;
+		color: var(--color-ink-2);
+	}
+
+	.browser {
+		max-width: 24rem;
+		width: 100%;
+		justify-self: center;
+		overflow: hidden;
+		background: #fff;
+		border-radius: 1rem;
+		box-shadow:
+			0 0 0 1px var(--color-line),
+			0 1.5rem 3rem -1.5rem color-mix(in srgb, var(--color-petrol-950) 35%, transparent);
+	}
+
+	.browser__bar {
+		padding: 0.6rem 0.8rem;
+		background: #f4f4f5;
+	}
+
+	.browser__bar span {
+		display: block;
+		padding: 0.3rem 0.7rem;
+		background: #fff;
+		border-radius: 999px;
+		font-size: 0.82rem;
+		color: var(--color-ink-2);
+		overflow-wrap: anywhere;
+	}
+
+	.browser__body {
+		padding: 1.4rem 1.4rem 1.6rem;
+	}
+
+	.browser__body p {
+		margin: 0;
+	}
+
+	.browser__group {
+		font-weight: 700;
+	}
+
+	.browser__label {
+		margin-top: 1rem !important;
+		font-size: 0.88rem;
+		color: var(--color-ink-2);
+	}
+
+	.browser__amount {
+		font-family: var(--font-display);
+		font-size: 2.2rem;
+		font-weight: 700;
+		color: var(--color-petrol-600);
+		letter-spacing: -0.02em;
+	}
+
+	.browser__to {
+		font-size: 0.92rem;
+		color: var(--color-ink-2);
+	}
+
+	@media (min-width: 52rem) {
+		.noapp__grid {
+			grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+			gap: 4rem;
+		}
+	}
+</style>

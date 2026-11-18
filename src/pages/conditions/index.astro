@@ -1,0 +1,146 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { site, pricing } from "../../config";
+
+/*
+ * Mirrors tallyno-api: PRICING.md (Pass per cycle, trial from the first round,
+ * founders offer), REFERRAL.md (credit on a Pass, activation rule, annual cap),
+ * the contract of honour (Tallyno is not a party, SMS acceptance, the app
+ * calendar prevails) and account deletion blockers.
+ */
+const mail = `mailto:${site.email}`;
+---
+
+<LegalLayout
+	title="Conditions d'utilisation"
+	description="Les règles d'utilisation de Tallyno, l'application qui tient les comptes de ta tontine et de tes dépenses partagées."
+	updated="16 novembre 2026"
+>
+	<h2>1. Acceptation</h2>
+	<p>
+		En installant ou en utilisant Tallyno, tu acceptes ces conditions. Si tu ne les acceptes pas, n'utilise pas
+		l'application.
+	</p>
+
+	<h2>2. Ce que fait Tallyno</h2>
+	<p>
+		Tallyno, édité par {site.studio.name}, permet de suivre des tontines et des dépenses partagées entre proches :
+		créer des groupes, enregistrer des dépenses, des cotisations et des remboursements, et voir qui doit quoi à qui.
+	</p>
+	<p>Tallyno n'est :</p>
+	<ul>
+		<li>ni une banque ni un établissement de crédit ;</li>
+		<li>ni un prestataire de services de paiement ;</li>
+		<li>ni un service de transfert d'argent.</li>
+	</ul>
+	<p>
+		Tallyno enregistre et affiche ce que les membres déclarent et confirment. L'application ne détient, ne gère ni ne
+		transfère l'argent des groupes : les cotisations et les remboursements se font directement entre membres.
+	</p>
+
+	<h2>3. Ton compte</h2>
+	<p>
+		Ton compte est lié à un numéro de téléphone valide, confirmé par un code reçu par SMS. Tu es responsable de ce qui
+		est fait depuis ton compte et tu t'engages à fournir des informations exactes.
+	</p>
+	<p>
+		Tu n'ajoutes dans un groupe que des personnes qui y ont consenti. Une personne ajoutée sans avoir Tallyno reçoit un
+		SMS qui lui dit qui l'a ajoutée.
+	</p>
+
+	<h2>4. Les règles du groupe</h2>
+	<p>
+		Chaque groupe fixe ses règles : montant et rythme des cotisations, ordre de passage, trésorier, amendes. Tallyno
+		les applique et les affiche, mais n'encaisse ni les cotisations ni les amendes.
+	</p>
+
+	<h2>5. Le contrat d'honneur</h2>
+	<p>
+		Une tontine peut proposer à ses membres un contrat d'honneur qui reprend ses règles. Chaque membre l'accepte dans
+		l'application avec un code reçu par SMS, et Tallyno garde la trace de qui a accepté quelle version du texte.
+	</p>
+	<p>
+		Ce contrat est un engagement entre les membres. Tallyno n'en est pas partie et ne garantit pas les paiements. Le
+		calendrier affiché dans l'application fait foi pour les dates des tours. Si les règles changent, les membres
+		acceptent la nouvelle version.
+	</p>
+
+	<h2>6. Offre gratuite et Pass</h2>
+	<p>
+		Tallyno propose une offre gratuite. Certaines fonctions d'une tontine sont réservées au Pass, décrit sur la
+		<a href="/#tarifs">page des tarifs</a> et dans l'application, quand il est proposé.
+	</p>
+	<ul>
+		<li>
+			Le Pass s'achète pour un cycle d'une tontine. Son prix, en FCFA, dépend de la tontine et est affiché avant le
+			paiement.
+		</li>
+		<li>
+			Le premier cycle d'une tontine bénéficie d'un essai de {pricing.trialDays} jours à partir du premier tour. Après
+			l'essai, le prix ne porte que sur les tours qui restent.
+		</li>
+		{
+			pricing.foundersOffer && (
+				<li>Les groupes qui nous rejoignent pendant la bêta ont leur premier cycle entier offert.</li>
+			)
+		}
+		<li>Il est payé par Mobile Money, sur la page de notre prestataire de paiement, par un admin de la tontine.</li>
+		<li>
+			Un paiement confirmé est définitif pour le cycle. Si tu as été débité sans que le Pass soit activé, écris-nous :
+			nous l'activons ou nous te remboursons.
+		</li>
+	</ul>
+
+	<h2>7. Parrainage</h2>
+	<p>
+		Le programme de parrainage, quand il est ouvert, offre un crédit en FCFA à utiliser sur un Pass, à toi et à la
+		personne que tu as fait venir. Le crédit est accordé quand le groupe créé par cette personne devient réellement
+		actif : d'autres membres, avec leurs propres numéros, et une première activité. Le montant et les conditions sont
+		indiqués dans l'application.
+	</p>
+	<ul>
+		<li>Le crédit n'a pas de valeur en argent : il n'est ni remboursable, ni échangeable, ni transférable.</li>
+		<li>Il ne paie jamais plus que le prix du Pass ; ce qui reste est gardé pour un prochain Pass.</li>
+		<li>Le nombre de parrainages récompensés est plafonné par an.</li>
+		<li>
+			Tout abus (faux comptes, numéros jetables, auto-parrainage) entraîne l'annulation des crédits et peut entraîner
+			la suspension du compte.
+		</li>
+	</ul>
+	<p>Nous pouvons modifier ou arrêter le programme avec un préavis de 30 jours.</p>
+
+	<h2>8. Utilisation acceptable</h2>
+	<p>Il est interdit :</p>
+	<ul>
+		<li>d'utiliser Tallyno pour tromper d'autres membres ou à des fins frauduleuses ;</li>
+		<li>d'accéder sans autorisation aux comptes ou aux données d'autres utilisateurs ;</li>
+		<li>de perturber le fonctionnement de nos serveurs ;</li>
+		<li>d'utiliser l'application pour une activité illégale.</li>
+	</ul>
+
+	<h2>9. Suppression de ton compte</h2>
+	<p>
+		Tu peux supprimer ton compte dans l'application, une fois l'argent en jeu réglé : solde d'un groupe, cycle de
+		tontine en cours, rôle de trésorier, retard ou amende. Le détail est dans la
+		<a href="/confidentialite/#suppression">politique de confidentialité</a>.
+	</p>
+
+	<h2>10. Responsabilité</h2>
+	<p>
+		Tallyno est fourni en l'état. Nous faisons notre possible pour que le service soit disponible et exact, sans pouvoir
+		le garantir en permanence.
+	</p>
+	<p>
+		Tallyno est un outil de suivi, pas un arbitre. Nous ne sommes pas responsables des litiges financiers entre les
+		membres d'un groupe.
+	</p>
+
+	<h2>11. Modifications</h2>
+	<p>
+		Nous pouvons modifier ces conditions. En cas de changement important, nous te prévenons dans l'application au moins
+		15 jours avant. Continuer à utiliser Tallyno ensuite vaut acceptation.
+	</p>
+
+	<h2>12. Contact</h2>
+	<p>Pour toute question sur ces conditions : <a href={mail}>{site.email}</a>.</p>
+</LegalLayout>

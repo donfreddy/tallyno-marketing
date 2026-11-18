@@ -1,0 +1,85 @@
+---
+import Layout from "./Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	updated: string;
+}
+
+const { title, description, updated } = Astro.props;
+---
+
+<Layout title={`${title} | Tallyno`} description={description}>
+	<a class="skip-link" href="#contenu">Aller au contenu</a>
+	<SiteHeader />
+	<main id="contenu" class="legal">
+		<div class="frame legal__frame">
+			<h1>{title}</h1>
+			<p class="legal__updated">Dernière mise à jour : {updated}</p>
+			<div class="legal__body">
+				<slot />
+			</div>
+		</div>
+	</main>
+	<SiteFooter />
+</Layout>
+
+<style>
+	.legal {
+		padding-block: 3.5rem 5rem;
+	}
+
+	.legal__frame {
+		max-width: 44rem;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(2rem, 1.5rem + 2vw, 2.8rem);
+		line-height: 1.08;
+	}
+
+	.legal__updated {
+		margin: 0.6rem 0 0;
+		color: var(--color-ink-2);
+	}
+
+	.legal__body {
+		margin-top: 2.5rem;
+		padding-top: 0.5rem;
+		border-top: 2px solid var(--color-ink);
+	}
+
+	.legal__body :global(h2) {
+		margin: 2.25rem 0 0.6rem;
+		font-size: 1.3rem;
+		line-height: 1.25;
+	}
+
+	.legal__body :global(p),
+	.legal__body :global(li) {
+		color: #3f3f46;
+		line-height: 1.7;
+	}
+
+	.legal__body :global(p) {
+		margin: 0 0 0.9rem;
+	}
+
+	.legal__body :global(ul) {
+		margin: 0 0 0.9rem;
+		padding-left: 1.25rem;
+	}
+
+	.legal__body :global(li + li) {
+		margin-top: 0.35rem;
+	}
+
+	.legal__body :global(a) {
+		color: var(--color-petrol-600);
+		overflow-wrap: anywhere;
+	}
+</style>
