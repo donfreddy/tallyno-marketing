@@ -49,7 +49,8 @@
                   class="flex items-center gap-3 px-8 py-4 rounded-2xl transition-all hover:opacity-90 hover:scale-[1.02]"
                   style="background: white; color: #18181B; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px"
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
+                <UIcon name="i-simple-icons-apple" class="size-5" />
+                <!-- <UIcon name="i-simple-icons-appstore" class="" /> -->
                   <div class="text-left">
                     <p style="font-size: 10px; opacity: 0.5">Disponible sur</p>
                     <p style="line-height: 1">App Store</p>
@@ -62,7 +63,7 @@
                   class="flex items-center gap-3 px-8 py-4 rounded-2xl transition-all hover:opacity-90 hover:scale-[1.02]"
                   style="background: white; color: #18181B; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px"
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202c.495.28.495 1.116 0 1.396zm-4.45 2.505l-3.542 3.521-3.919-2.218 3.892-2.202 3.569 2.899zm-11.007-3.848l3.919-2.218 3.515 3.493-3.543 3.521-3.891-2.202c-.495-.28-.495-1.116 0-1.396zm4.45-2.505l3.542-3.521 3.919 2.218-3.892 2.202-3.569-2.899z" /></svg>
+                 <UIcon name="i-simple-icons-googleplay" class="size-5" />
                   <div class="text-left">
                     <p style="font-size: 10px; opacity: 0.5">Disponible sur</p>
                     <p style="line-height: 1">Google Play</p>
@@ -99,7 +100,8 @@
                 style="background: #F8F8FA; border: 1px solid #E4E4E7"
               >
                 <div class="flex items-center gap-2 mb-6">
-                  <div v-html="store.icon" style="color: #18181B" />
+                  <!-- <div v-html="store.icon" style="color: #18181B" /> -->
+                  <UIcon :name="store.icon" class="size-6 bg-zinc-900" />
                   <div>
                     <p style="font-size: 16px; font-weight: 700; color: #18181B; font-family: 'DM Sans', sans-serif">
                       {{ store.label }}
@@ -173,13 +175,13 @@ const stores = [
     label: 'App Store',
     sublabel: 'iPhone & iPad (iOS 14+)',
     url: APP_STORE_URL,
-    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>'
+    icon: 'i-simple-icons-appstore'
   },
   {
     label: 'Google Play',
     sublabel: 'Android 8.0+',
     url: PLAY_STORE_URL,
-    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202c.495.28.495 1.116 0 1.396zm-4.45 2.505l-3.542 3.521-3.919-2.218 3.892-2.202 3.569 2.899zm-11.007-3.848l3.919-2.218 3.515 3.493-3.543 3.521-3.891-2.202c-.495-.28-.495-1.116 0-1.396zm4.45-2.505l3.542-3.521 3.919 2.218-3.892 2.202-3.569-2.899z" /></svg>'
+    icon: 'i-simple-icons-googleplay'
   }
 ]
 </script>
