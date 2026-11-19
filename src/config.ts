@@ -8,8 +8,8 @@
  */
 export const site = {
   name: "Tallyno",
-  url: "https://tallyno.example",
-  email: "contact@tallyno.example",
+  url: "https://app.tallyno.com",
+  email: "contact@tallyno.com",
   studio: { name: "Lehmora Labs", url: "https://lehmora.com" },
 } as const;
 
