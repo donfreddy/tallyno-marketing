@@ -2,14 +2,14 @@
  * Everything that changes at launch lives here.
  *
  * Placeholders to replace before going live:
- * - `site.url`: the real domain (".example" is a reserved, never-resolving TLD).
  * - `stores.ios`: the App Store id once the app is published.
- * - `site.email`: a mailbox on the real domain.
+ * - `public/.well-known/assetlinks.json`: the SHA-256 of the Play app signing
+ *   key, or Android opens invite links in the browser.
  */
 export const site = {
   name: "Tallyno",
-  url: "https://tallyno.example",
-  email: "contact@tallyno.example",
+  url: "https://tallyno.com",
+  email: "contact@tallyno.com",
   studio: { name: "Lehmora Labs", url: "https://lehmora.com" },
 } as const;
 

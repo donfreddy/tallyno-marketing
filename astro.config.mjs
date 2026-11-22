@@ -15,7 +15,9 @@ export default defineConfig({
     "/download": "/telecharger/",
     "/pricing": "/#tarifs",
   },
-  integrations: [sitemap({ filter: (page) => !page.includes("/telecharger/") })],
+  integrations: [
+    sitemap({ filter: (page) => !page.includes("/telecharger/") && !page.includes("/join/") }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

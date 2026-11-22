@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["N4FCD76FGF.com.lehmora.tallyno"],
+        "components": [{ "/": "/join/*", "comment": "Group invite links" }]
+      }
+    ]
+  }
+}
