@@ -2,14 +2,17 @@
  * Everything that changes at launch lives here.
  *
  * Placeholders to replace before going live:
- * - `site.url`: the real domain (".example" is a reserved, never-resolving TLD).
  * - `stores.ios`: the App Store id once the app is published.
- * - `site.email`: a mailbox on the real domain.
+ * - `public/.well-known/assetlinks.json`: holds the upload key (release builds
+ *   for testers) and Freddy's debug key (local `flutter run`). At the first
+ *   Play Console upload, add the Play app signing key (App integrity, App
+ *   signing), or store installs open invite links in the browser; remove the
+ *   debug key before launch.
  */
 export const site = {
   name: "Tallyno",
-  url: "https://tallyno.example",
-  email: "contact@tallyno.example",
+  url: "https://tallyno.com",
+  email: "contact@tallyno.com",
   studio: { name: "Lehmora Labs", url: "https://lehmora.com" },
 } as const;
 

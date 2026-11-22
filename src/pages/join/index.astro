@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Logo from "../../components/Logo.astro";
+import StoreButtons from "../../components/StoreButtons.astro";
+---
+
+<!--
+	Invite links (https://tallyno.com/join/<token>) come from the API. With the
+	app installed, Android App Links and iOS Universal Links open the app before
+	this page loads. This page is for everyone else; vercel.json rewrites every
+	/join/<token> here, and the token is read from the address.
+-->
+<Layout
+	title="Rejoins ton groupe sur Tallyno"
+	description="On t'invite dans un groupe Tallyno. Ouvre l'invitation dans l'app pour le rejoindre."
+	noindex
+>
+	<main class="join" data-state="invite">
+		<div class="join__card">
+			<a href="/" aria-label="Accueil Tallyno"><Logo tone="light" size={34} /></a>
+
+			<div class="join__invite">
+				<h1>On t'invite dans un groupe</h1>
+				<p>Tu as déjà Tallyno ? Ouvre l'invitation dans l'app pour rejoindre le groupe.</p>
+				<a class="join__open" id="join-open" href="/telecharger/">Ouvrir dans Tallyno</a>
+				<p class="join__later">
+					Pas encore l'app ? Installe-la, puis reviens sur ce lien : il t'ajoutera au groupe.
+				</p>
+				<StoreButtons tone="dark" />
+			</div>
+
+			<div class="join__broken">
+				<h1>Ce lien d'invitation est incomplet</h1>
+				<p>Demande à la personne qui t'a invité de te le renvoyer.</p>
+				<a class="join__open" href="/">Découvrir Tallyno</a>
+			</div>
+		</div>
+	</main>
+
+	<script is:inline>
+		(function () {
+			// /join/<token>/ : the API issues UUIDs, anything else is a broken link.
+			var match = location.pathname.match(/^\/join\/([A-Za-z0-9-]{8,})\/?$/);
+			var main = document.querySelector(".join");
+			if (!match) {
+				main.dataset.state = "broken";
+				return;
+			}
+			document.getElementById("join-open").href = "tallyno://join/" + encodeURIComponent(match[1]);
+		})();
+	</script>
+</Layout>
+
+<style>
+	.join {
+		min-height: 100svh;
+		display: grid;
+		place-items: center;
+		padding: 2rem var(--gutter);
+		background:
+			radial-gradient(circle at 50% 0%, var(--color-petrol-700), transparent 60%),
+			var(--color-petrol-900);
+		color: #fff;
+	}
+
+	.join__card,
+	.join__invite,
+	.join__broken {
+		display: grid;
+		justify-items: center;
+		gap: 1.25rem;
+		max-width: 26rem;
+		text-align: center;
+	}
+
+	.join[data-state="invite"] .join__broken,
+	.join[data-state="broken"] .join__invite {
+		display: none;
+	}
+
+	h1 {
+		margin: 0.5rem 0 0;
+		font-size: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+		line-height: 1.05;
+	}
+
+	p {
+		margin: 0;
+		color: var(--color-petrol-100);
+	}
+
+	.join__open {
+		display: inline-block;
+		padding: 0.9rem 1.6rem;
+		border-radius: 999px;
+		background: #fff;
+		color: var(--color-petrol-900);
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.join__open:hover {
+		background: var(--color-petrol-50);
+	}
+
+	.join__later {
+		font-size: 0.95rem;
+		color: var(--color-petrol-200);
+	}
+</style>
