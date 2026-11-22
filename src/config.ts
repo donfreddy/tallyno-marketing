@@ -3,8 +3,11 @@
  *
  * Placeholders to replace before going live:
  * - `stores.ios`: the App Store id once the app is published.
- * - `public/.well-known/assetlinks.json`: the SHA-256 of the Play app signing
- *   key, or Android opens invite links in the browser.
+ * - `public/.well-known/assetlinks.json`: holds the upload key (release builds
+ *   for testers) and Freddy's debug key (local `flutter run`). At the first
+ *   Play Console upload, add the Play app signing key (App integrity, App
+ *   signing), or store installs open invite links in the browser; remove the
+ *   debug key before launch.
  */
 export const site = {
   name: "Tallyno",
