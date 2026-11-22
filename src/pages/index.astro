@@ -12,12 +12,52 @@ import Pricing from "../components/Pricing.astro";
 import Faq from "../components/Faq.astro";
 import FinalCta from "../components/FinalCta.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import { site, stores } from "../config";
+
+// What search engines read about Tallyno. No rating or review: none exist
+// yet, and inventing them breaks Google's rules. iOS joins operatingSystem
+// once the App Store id is real.
+const structuredData = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": `${site.url}/#organization`,
+			name: site.name,
+			url: `${site.url}/`,
+			logo: new URL("/apple-touch-icon.png", site.url).href,
+			email: site.email,
+			parentOrganization: { "@type": "Organization", name: site.studio.name, url: site.studio.url },
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${site.url}/#website`,
+			name: site.name,
+			url: `${site.url}/`,
+			inLanguage: "fr",
+			publisher: { "@id": `${site.url}/#organization` },
+		},
+		{
+			"@type": "MobileApplication",
+			name: site.name,
+			description:
+				"Application pour suivre une tontine et des dépenses partagées. Chacun paie par Mobile Money, Tallyno note qui a payé. L'argent ne passe jamais par Tallyno.",
+			operatingSystem: "ANDROID",
+			applicationCategory: "FinanceApplication",
+			inLanguage: "fr",
+			downloadUrl: stores.android,
+			offers: { "@type": "Offer", price: "0", priceCurrency: "XAF" },
+			publisher: { "@id": `${site.url}/#organization` },
+		},
+	],
+};
 ---
 
 <Layout
-	title="Tallyno : ta tontine tourne, Tallyno tient les comptes"
+	title="Tallyno : l'application pour gérer ta tontine"
 	description="Suis ta tontine et tes dépenses partagées entre proches. Chacun paie par Mobile Money comme d'habitude, Tallyno note qui a payé. L'argent ne passe jamais par nous."
 >
+	<script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />
 	<a class="skip-link" href="#contenu">Aller au contenu</a>
 	<SiteHeader />
 	<main id="contenu">

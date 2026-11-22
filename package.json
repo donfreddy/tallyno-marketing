@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "og": "sh og/render.sh"
   },
   "packageManager": "pnpm@10.33.2",
   "dependencies": {
