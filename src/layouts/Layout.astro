@@ -18,6 +18,8 @@ const {
 	noindex = false,
 } = Astro.props;
 
+// Every tab and search result says whose page it is.
+const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImageUrl = new URL(ogImage, site.url).href;
 ---
@@ -33,7 +35,7 @@ const ogImageUrl = new URL(ogImage, site.url).href;
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>{title}</title>
+		<title>{fullTitle}</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
 		{noindex && <meta name="robots" content="noindex" />}
@@ -41,7 +43,7 @@ const ogImageUrl = new URL(ogImage, site.url).href;
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content={site.name} />
 		<meta property="og:locale" content="fr_FR" />
-		<meta property="og:title" content={title} />
+		<meta property="og:title" content={fullTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
 		<meta property="og:image" content={ogImageUrl} />
@@ -59,6 +61,7 @@ const ogImageUrl = new URL(ogImage, site.url).href;
 				document.documentElement.dataset.os = os;
 			})();
 		</script>
+		<slot name="head" />
 	</head>
 	<body>
 		<slot />

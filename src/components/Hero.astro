@@ -9,7 +9,10 @@ import { orbitRatio } from "../data/tontine-ring";
 <section class="hero" aria-labelledby="hero-title">
 	<div class="frame hero__grid">
 		<div class="hero__text">
-			<h1 id="hero-title">Ta tontine tourne. Tallyno tient les comptes.</h1>
+			<h1 id="hero-title">
+				<span class="hero__kicker">L'application pour gérer ta tontine et tes dépenses partagées</span>
+				Ta tontine tourne. Tallyno tient les comptes.
+			</h1>
 			<p class="hero__lead">
 				Chacun paie le bénéficiaire par Mobile Money, comme d'habitude. Tallyno note qui a payé, qui a confirmé
 				et ce qui reste dû. L'argent ne passe jamais par nous.
@@ -36,6 +39,18 @@ import { orbitRatio } from "../data/tontine-ring";
 </section>
 
 <style>
+	/* Says what Tallyno is in the words people search for, above the line. */
+	.hero__kicker {
+		display: block;
+		margin-bottom: 0.9rem;
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		font-weight: 600;
+		letter-spacing: 0;
+		line-height: 1.4;
+		color: var(--color-petrol-200);
+	}
+
 	.hero {
 		position: relative;
 		overflow: hidden;
